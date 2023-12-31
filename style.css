@@ -1,0 +1,301 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+  }
+  :root {
+    --background: #0f1219;
+    --gradient-1: #8a3186;
+    --gradient-2: #290c22;
+    --pause: #ff7500;
+    --gradient-4: #dc033a;
+    --sdf: #858377;
+    --sdkfj: #f00b51;
+    --green: #49f054;
+    --grn: #227027;
+    --skdf: #08f9ff;
+    --b1 : #b1b1b1;
+  }
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
+    /* background-image: linear-gradient(to top left, var(--gradient-1), var(--gradient-2)); */
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+/* header */
+.header{
+    background-color: transparent;
+}
+.head-container{
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    padding: 0px 100px 0px 60px;
+    border-bottom: 1px solid rgb(8, 249, 255, 0.2);
+    filter: drop-shadow(0 5px 15px #08f9ff);
+}
+.img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.img img{
+    height: 100%;
+    width: 100%;
+}
+.name span {
+    color: var(--b1);
+}
+
+/* main-page */
+.main-page {
+    flex-direction: row;
+    height: calc(100vh - 40px);
+    width: 100%;
+}
+.clock-section{
+    border: 1px solid #000;
+    height: 100%;
+    width: 70%;
+    padding: 20px;
+}
+.choose-section{
+    border: 1px solid #000;
+    height: 120px;
+    width: 400px;
+    margin: 30px auto;  
+    flex-direction: row; 
+}
+
+.choose-section nav{
+    position: relative;
+    background: #0f1219;
+    position: relative;
+    display: flex;
+}
+nav a{
+    position: relative;
+    text-decoration: none;
+    padding: 15px 25px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+#marker{
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100px;
+    border-bottom: 5px solid #08f9ff;
+    background: linear-gradient(0deg, #08f9ff33, transparent);
+    transition: 0.5s;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 25px #08f9ff);
+}
+
+/* times */
+.time-dialogue{
+    position: relative;
+    border: 1px solid #000;
+    height: calc(100% - 220px);
+    margin: auto;
+}
+
+/* timer-section */
+.timer-block {
+    flex-direction: column;
+}
+.timer-countdown-box{
+    position: relative;
+    height: 250px;
+    width: 250px;
+}
+.timer-controller{
+    justify-content: space-around;
+    margin-top: 40px;
+    width: 100%;
+}
+.timer-controller button {
+    background-color: #08f9ff;
+    border: none;
+    padding: 15px 40px 13px;
+    border-radius: 20px;
+}
+.timer-controller button:hover {
+    background-color: var(--pause);
+}
+.timer-controller button:hover img {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+.timer-countdown{
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: white;
+    overflow: hidden;
+    z-index: 1;
+    /* visibility: hidden; */
+}
+.semicircle{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: right center;
+}
+.semicircle:nth-child(1){
+    /* background-color: red; */
+    background-color: var(--pause);
+    z-index: 2;
+}
+.semicircle:nth-child(2){
+    /* background-color: blue; */
+    background-color: var(--pause);
+    z-index: 3;
+}
+.semicircle:nth-child(3){
+    background-color: white;
+    z-index: 4;
+    /* display: none; */
+}
+.outermost-circle {
+    width: 240px;
+    height: 240px;
+    background-color: var(--background);
+    border-radius: 50%;
+    z-index: 5;
+    /* display: none; */
+}
+
+/* .timer-countdown:hover .semicircle:nth-child(1) {
+    transform: rotate(180deg);
+    transition: 1s linear;
+}
+.timer-countdown:hover .semicircle:nth-child(2) {
+    transform: rotate(360deg);
+    transition: 2s linear;
+}
+.timer-countdown:hover .semicircle:nth-child(3) {
+    opacity: 0;
+    transition: opacity 0s 1s;
+} */
+
+.time-stamp {
+    position: absolute;
+    width: 200px;
+    height: 140px;
+    z-index: 6;
+    flex-direction: column;
+}
+.time-stamp.disable {
+    opacity: 0.9;
+    pointer-events: none;
+}
+.tik-tok {
+    width: 200px;
+    height: 70px;
+    margin-top: 30px;
+    background-color: var(--background);
+    z-index: 7;
+    flex-direction: row;
+}
+.tik-tok select, .timer-repeater select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    text-align: center;
+    border: none;
+    color: white;
+    background-color: var(--background);
+    font-size: 40px; 
+}
+.tik-tok span {
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    background-color: var(--background);
+}
+.tik-tok .colon {
+    margin-bottom: 5px;
+    padding: 0 4px;
+    font-family: poppins;
+}
+.timer-repeater {
+    margin-top: 10px;
+}
+.timer-repeater select {
+    font-size: 1.5em;
+    padding: 0 5px;
+    border: 1px solid rgb(8, 249, 255, 0.3);
+    border-radius: 15px;
+}
+.timer-repeater span {
+    font-size: 1.5em;
+}
+.tik-tok strong{ 
+    font-size: 30px;
+    margin-bottom: 5px;
+    padding: 0 4px;
+    font-family: poppins;
+}
+/* end-timer-section */
+
+/* stopwatch-section */
+.stopwatch-timer{
+    position: absolute;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* background-image: linear-gradient(to left, #31a339, #a31439); */
+    filter: blur(80%);
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+}
+.time-stamp-stopwatch span {
+    color: #fff;
+    font-weight: 600;
+    font-size: 40px;
+}
+.timer-control{
+    margin: 25px auto;
+}
+.timer-control button {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #227027;
+}
+.timer-control button img {
+    width: 50px;
+    height: 50px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.loop-timer{
+    float: right;
+}
+
+/* .task-section */
+.task-section{
+    position: relative;
+    border: 1px solid #000;
+    height: 100%;
+    width: 30%;
+    padding: 40px;
+}

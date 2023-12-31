@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+
+        <!-- header -->
+        <div class="header center", id="header-id">
+            <div class="head-container center">
+                <div class="img center">
+                    <img src="./img/jaitriya-icon.png" alt="profile-photo">
+                </div>
+                <div class="name center"><span>patelji</span></div>
+            </div>
+        </div>
+
+        <!-- main-page -->
+        <div class="main-page center">
+            <div class="clock-section">
+                <div class="choose-section center">
+                    <nav>
+                        <a href="#">Timer</a>
+                        <a href="#">Stopwatch</a>
+                        <a href="#">Rest</a>
+                        <div id="marker" class="start-home"></div>
+                    </nav>
+                </div>
+                
+                <div class="time-dialogue center">
+                    <!-- <div class="stopwatch-timer">
+                        <div class="time-stamp-stopwatch">
+                            <span class="timer-hours">00</span>
+                            <span class="timer-part">:</span>
+                            <span class="timer-minutes">00</span>
+                            <span class="timer-part">:</span>
+                            <span class="timer-seconds">00</span>
+                        </div>
+                        <div class="timer-control">
+                            <button><img src="./img/play_circle.svg" alt="play_circle"></button>
+                            <button><img src="./img/pause_circle.svg" alt="play_circle"></button>
+                        </div>
+                    </div> -->
+                    
+                    <div class="timer-block center">
+                        <div class="timer-countdown-box">
+                            <div class="timer-countdown center">
+                                <div class="semicircle"></div>
+                                <div class="semicircle"></div>
+                                <div class="semicircle"></div>
+                                <div class="outermost-circle"></div>
+                                <div class="time-stamp center">
+                                    <div class="tik-tok center">
+                                        <select name="minutes" id="minutes">
+                                            <option value="00" selected>00</option>
+                                        </select>
+                                        <strong>:</strong>
+                                        <select name="seconds" id="seconds">
+                                            <option value="00" selected>00</option>
+                                        </select>
+                                    </div>
+                                    <div class="timer-repeater">
+                                        <span>0</span>
+                                        <span>/</span>
+                                        <select name="repeater" id="repeater">
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timer-controller center">
+                            <button type="button" id="reset">
+                                <img src="./img/restart.svg" alt="restart">
+                            </button>
+                            <button type="button" id="play-pause">
+                                <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="task-section">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let marker = document.querySelector('#marker');
+let item = document.querySelectorAll('nav a');
+function indicator(e) {
+    marker.style.left = e.offsetLeft+'px';
+    marker.style.width = e.offsetWidth+'px';
+}
+item.forEach(link => {
+    link.addEventListener('click', (e)=>{
+        indicator(e.target);
+    })
+})
+</script>
+<script src="js/logic.js" type="module"></script>
+</html>
