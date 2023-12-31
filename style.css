@@ -111,7 +111,9 @@ nav a{
 
 /* timer-section */
 .timer-block {
+    position: absolute;
     flex-direction: column;
+    /* visibility: hidden; */
 }
 .timer-countdown-box{
     position: relative;
@@ -134,6 +136,12 @@ nav a{
 }
 .timer-controller button:hover img {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+.timer-controller button:nth-child(1) {
+    display: none;
+}
+.timer-controller button:nth-child(3) {
+    display: none;
 }
 .timer-countdown{
     position: absolute;
@@ -254,41 +262,69 @@ nav a{
 /* end-timer-section */
 
 /* stopwatch-section */
-.stopwatch-timer{
-    position: absolute;
-    padding: 40px;
-    background-color: rgba(0, 0, 0, 0.3);
-    /* background-image: linear-gradient(to left, #31a339, #a31439); */
-    filter: blur(80%);
-    border-radius: 10%;
-    display: flex;
+.stopwatch-block{
     flex-direction: column;
+    position: absolute;
     visibility: hidden;
 }
-.time-stamp-stopwatch span {
-    color: #fff;
-    font-weight: 600;
-    font-size: 40px;
+.stopwatch-countdown-box{
+    position: relative;
+    height: 250px;
+    width: 250px;
 }
-.timer-control{
-    margin: 25px auto;
-}
-.timer-control button {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+.stopwatch-countdown {
+    position: absolute;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
-    border: none;
-    background-color: #227027;
+    color: #fff;
+    filter: drop-shadow(0 1px 4px var(--skdf));
+    overflow: hidden;
+    z-index: 1;
 }
-.timer-control button img {
-    width: 50px;
-    height: 50px;
+.inner-circle {
+    width: 240px;
+    height: 240px;
+    background-color: var(--background);
+    border-radius: 50%;
+    z-index: 5;
+}
+.stopwatch-controller{
+    justify-content: space-around;
+    margin-top: 40px;
+    width: 100%;
+}
+.stopwatch-controller button {
+    background-color: #08f9ff;
+    border: none;
+    padding: 15px 40px 13px;
+    border-radius: 20px;
+}
+.stopwatch-controller button:hover {
+    background-color: var(--pause);
+}
+.stopwatch-controller button:hover img {
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
-
-.loop-timer{
-    float: right;
+.stopwatch-controller button:nth-child(1) {
+   display: none;
+}
+.stopwatch-controller button:nth-child(3) {
+    display: none;
+}
+#stopwatch-tiktok {
+    width: 100%;
+}
+#stopwatch-tiktok p{
+    width: 200px;
+    display: block;
+    margin-left: 30px;
+    font-size: 2em;
+    font-family: 'Segoe UI';
+}
+#stopwatch-tiktok p span {
+    color: var(--skdf);
+    font-size: 20px;
 }
 
 /* .task-section */

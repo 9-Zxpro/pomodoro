@@ -6,7 +6,7 @@
     <title>Pomodoro</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    
+    <script src="js/clock-select.js" type="module"></script>
 </head>
 <body>
     <div class="container">
@@ -34,19 +34,31 @@
                 </div>
                 
                 <div class="time-dialogue center">
-                    <!-- <div class="stopwatch-timer">
-                        <div class="time-stamp-stopwatch">
-                            <span class="timer-hours">00</span>
-                            <span class="timer-part">:</span>
-                            <span class="timer-minutes">00</span>
-                            <span class="timer-part">:</span>
-                            <span class="timer-seconds">00</span>
-                        </div>
-                        <div class="timer-control">
-                            <button><img src="./img/play_circle.svg" alt="play_circle"></button>
-                            <button><img src="./img/pause_circle.svg" alt="play_circle"></button>
-                        </div>
-                    </div> -->
+                    <div class="stopwatch-block center">
+                            <div class="stopwatch-countdown-box">
+                                <div class="stopwatch-countdown center">
+                                    <div class="inner-circle"></div>
+                                    <div class="time-stamp center">
+                                        <div id="stopwatch-tiktok" class="center">
+                                            <p>00:00:00<span>.0</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stopwatch-controller center">
+                                <button type="button" id="reset" value="stopper">
+                                    <img src="./img/restart.svg" alt="restart">
+                                </button>
+                                <button type="button" id="play-pause" value="play">
+                                    <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
+                                </button>
+                                <button type="button" id="play-pause" value="pause">
+                                    <img src="./img/pause_FILL0.svg" alt="play-pause">
+                                </button>
+                            </div>
+                            
+                    </div>
                     
                     <div class="timer-block center">
                         <div class="timer-countdown-box">
@@ -55,8 +67,8 @@
                                 <div class="semicircle"></div>
                                 <div class="semicircle"></div>
                                 <div class="outermost-circle"></div>
-                                <div class="time-stamp center">
-                                    <div class="tik-tok center">
+                                <div id="time-stamp" class="time-stamp center">
+                                    <div id="timer-tiktok" class="tik-tok center">
                                         <select name="minutes" id="minutes">
                                             <option value="00" selected>00</option>
                                         </select>
@@ -80,8 +92,11 @@
                             <button type="button" id="reset">
                                 <img src="./img/restart.svg" alt="restart">
                             </button>
-                            <button type="button" id="play-pause">
+                            <button type="button" id="play-pause" value="play">
                                 <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
+                            </button>
+                            <button type="button" id="play-pause" value="pause">
+                                <img src="./img/pause_FILL0.svg" alt="play-pause">
                             </button>
                         </div>
                     </div>
@@ -106,5 +121,7 @@ item.forEach(link => {
     })
 })
 </script>
-<script src="js/logic.js" type="module"></script>
+<script src="js/timer.js" type="module"></script>
+<script src="js/stopwatch.js" type="module"></script>
+<script src="js/todo.js" type="module"></script>
 </html>
