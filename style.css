@@ -446,7 +446,7 @@ nav ul li a {
 
 .task-lister {
     margin-top: 16px;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: calc(100% - 150px);
     scroll-behavior: auto;
 }
