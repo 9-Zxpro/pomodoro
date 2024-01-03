@@ -66,16 +66,14 @@ function pauseTimer() {
         playPause[1].style.display = "block";
         playPause[2].style.display = "none";
         pause = true;
-        console.log(remainingTime);
     }
 }
 playPause[2].addEventListener("click", pauseTimer);
 
 function repeat() {
     if (r < repeatValueT) {
-        const minutes = minuteT * 60000,
-            seconds = secondT * 1000;
-        (setTime = minutes + seconds), (futureTime = Date.now() + setTime);
+        setTime = parseInt(minuteT, 10) * 60 + parseInt(secondT, 10);
+        remainingTime = setTime;
 
         intervalSetter(repeat);
         r++;
@@ -113,15 +111,18 @@ function intervalSetter(repeat) {
 
 // circular-progress and timer update
 function countDowntimer(repeat) {
+    if(pause){
+        playPause[2].style.display = "block";
+        playPause[1].style.display = "none";
+        pause = false;
+    } else {
+        remainingTime -= 1;
+    }
+
     semicircles[0].style.display = "block";
     semicircles[1].style.display = "block";
     semicircles[2].style.display = "block";
-
-    if(pause){
-        pause = false;
-    } else {
-        remainingTime = futureTime - Date.now();
-    }
+   
     const angle = (remainingTime / setTime) * 360;
     
     if (angle > 180) {
@@ -134,21 +135,21 @@ function countDowntimer(repeat) {
         semicircles[1].style.transform = `rotate(${angle}deg)`;
     }
 
-    const mins = Math.floor((remainingTime / (1000 * 60)) % 60).toLocaleString(
+    const mins = Math.floor(remainingTime / 60).toLocaleString(
         "en-US",
         { minimumIntegerDigits: 2, useGrouping: false }
     ),
-        secs = Math.floor((remainingTime / 1000) % 60).toLocaleString("en-US", {
-            minimumIntegerDigits: 2,
-            useGrouping: false,
-        });
-
+        secs = Math.floor(remainingTime % 60).toLocaleString(
+            "en-US",
+            { minimumIntegerDigits: 2, useGrouping: false}
+        );
+        
     selectMenu[0].value = `${mins}`;
     selectMenu[1].value = `${secs}`;
+    document.title = `${mins}`+":"+`${secs}` + " Focus time";
 
     if (remainingTime <= 0) {
         clearInterval(timerloop);
-
         if (repeatValueT == r) {
             ringTone2.play();
             ringTone2.loop = false;

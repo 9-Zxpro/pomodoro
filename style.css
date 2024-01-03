@@ -98,19 +98,24 @@
 .choose-section {
     border: 1px solid var(--black);
     height: 120px;
-    width: 400px;
     margin: 30px auto;
     flex-direction: row;
 }
 
-.choose-section nav {
+.choose-section nav{
     position: relative;
     background: var(--background);
-    position: relative;
+    
+    
+}
+nav ul {
     display: flex;
 }
-
-nav a {
+nav ul li {
+    list-style: none;
+    padding: 15px 25px;
+}
+nav ul li a {
     position: relative;
     text-decoration: none;
     padding: 15px 25px;
@@ -118,12 +123,13 @@ nav a {
     font-weight: 400;
     letter-spacing: 0.1em;
 }
-
+  
 #marker {
     position: absolute;
     bottom: 0;
+    left: 25px;
     height: 100%;
-    width: 100px;
+    width: 98px;
     border-bottom: 5px solid var(--skdf);
     background: linear-gradient(0deg, var(--repeater), transparent);
     transition: 0.5s;

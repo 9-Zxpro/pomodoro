@@ -26,9 +26,10 @@
             <div class="clock-section">
                 <div class="choose-section center">
                     <nav>
-                        <a href="#">Timer</a>
-                        <a href="#">Stopwatch</a>
-                        <a href="#">Rest</a>
+                        <ul>
+                            <li><a href="#">Timer</a></li>
+                            <li><a href="#">Stopwatch</a></li>
+                        </ul>
                         <div id="marker" class="start-home"></div>
                     </nav>
                 </div>
@@ -127,16 +128,20 @@
 </body>
 <script>
     let marker = document.querySelector('#marker');
-let item = document.querySelectorAll('nav a');
-function indicator(e) {
-    marker.style.left = e.offsetLeft+'px';
-    marker.style.width = e.offsetWidth+'px';
-}
-item.forEach(link => {
-    link.addEventListener('click', (e)=>{
-        indicator(e.target);
+    let item = document.querySelectorAll('nav a');
+    let activePage = window.location.pathname;
+    console.log(activePage);
+
+    function indicator(e) {
+        marker.style.width = e.offsetWidth+'px';
+        marker.style.left = e.offsetLeft+'px';
+    }
+    item.forEach(link => {
+        link.addEventListener('click', (e)=>{
+            indicator(e.target);
+            
+        })
     })
-})
 </script>
 <script src="js/timer.js" type="module"></script>
 <script src="js/stopwatch.js" type="module"></script>
