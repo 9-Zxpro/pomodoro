@@ -288,7 +288,10 @@ nav ul li a {
     font-size: 40px;
     cursor: pointer;
 }
-
+.tik-tok select option {
+    
+    font-size: 25px;
+}
 .tik-tok span {
     display: block;
     text-align: center;
