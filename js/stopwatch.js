@@ -24,6 +24,7 @@ function stopWatch(){
     let s = seconds < 10 ? "0"+seconds : seconds;
 
     ticker.innerHTML = `${h}:${m}:${s}<span style="color:#ff7500;">.${mili}</span>`;
+    
 }
 
 function start() {
@@ -37,8 +38,8 @@ function start() {
         stoplay[1].style.display = "none";
 
         stoplay[2].style.display = "block";
-        stoplay[2].style.background = "#ff7500";
-        stoplay[2].querySelector('img').style.filter = "invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)";
+        // stoplay[2].style.background = "#ff7500";
+        // stoplay[2].querySelector('img').style.filter = "invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)";
         
         stoplay[0].style.display = "block";
 
@@ -50,7 +51,7 @@ stoplay[1].addEventListener("click", start);
 
 function stopp() {
     clearInterval(interval);   
-
+    
     stoplay[2].style.display = "none";
     
     stoplay[1].style.display = "block";
