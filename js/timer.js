@@ -1,150 +1,166 @@
-
-const semicircles = document.querySelectorAll('.semicircle'),
-playPause = document.querySelectorAll('.timer-controller button'),
-timestamp = document.querySelector('#time-stamp'),
-selectMenu = document.querySelectorAll('#timer-tiktok select'),
-repeatingNo = document.querySelector('.timer-repeater select'),
-repeatedNo = document.querySelectorAll('.timer-repeater span');
+const semicircles = document.querySelectorAll(".semicircle"),
+    playPause = document.querySelectorAll(".timer-controller button"),
+    timestamp = document.querySelector("#time-stamp"),
+    selectMenu = document.querySelectorAll("#timer-tiktok select"),
+    repeatingNo = document.querySelector(".timer-repeater select"),
+    repeatedNo = document.querySelectorAll(".timer-repeater span");
 
 let ringTone1 = new Audio("./img/triangle-metal.mp3");
 let ringTone2 = new Audio("./img/tuntun.mp3");
 
-let timerloop, r = 0;
+// timer selected value of minute, seconds, and No of repeation
+let minuteT = 0,
+    secondT = 0,
+    repeatValueT = 0;
 
-for(let i=59; i>0; i--) {
-    i=i<10?"0"+i:i;
+let timerloop,
+    r = 0;
+let setTime,
+    futureTime,
+    remainingTime,
+    pause = false;
+
+for (let i = 59; i > 0; i--) {
+    i = i < 10 ? "0" + i : i;
     let option = `<option value"${i}">${i}</option>`;
-    selectMenu[0].firstElementChild.insertAdjacentHTML("afterend", option);    
+    selectMenu[0].firstElementChild.insertAdjacentHTML("afterend", option);
 }
-for(let i=59; i>0; i--) {
-    i=i<10?"0"+i:i;
+for (let i = 59; i > 0; i--) {
+    i = i < 10 ? "0" + i : i;
     let option = `<option value"${i}">${i}</option>`;
-    selectMenu[1].firstElementChild.insertAdjacentHTML("afterend", option);    
+    selectMenu[1].firstElementChild.insertAdjacentHTML("afterend", option);
 }
-for(let i=150; i>1; i--) {
+for (let i = 150; i > 1; i--) {
     let option = `<option value"${i}">${i}</option>`;
-    repeatingNo.firstElementChild.insertAdjacentHTML("afterend", option);    
+    repeatingNo.firstElementChild.insertAdjacentHTML("afterend", option);
 }
 
 function reSet() {
     selectMenu[0].value = `00`;
     selectMenu[1].value = `00`;
-    
-    semicircles[0].style.display = 'none';
-    semicircles[1].style.display = 'none';
-    semicircles[2].style.display = 'none';
-    
+
+    semicircles[0].style.display = "none";
+    semicircles[1].style.display = "none";
+    semicircles[2].style.display = "none";
+
     timestamp.classList.remove("disable");
-    playPause[1].querySelector('img').src = "./img/play_arrow_FILL0.svg";
-    playPause[1].style.background = "";
-    playPause[1].querySelector('img').style.filter = "";
-
-    playPause[0].style.display = "";
-
+    playPause[0].style.display = "none";
+    playPause[1].style.display = "block";
+    playPause[2].style.display = "none";
 }
 function resetter() {
-    const min = `${selectMenu[0].value}`,
-    sec = `${selectMenu[1].value}`;
-
-    const time = `${min}:${sec}`;
-    // !time.includes("00:00")
-    if(timerloop){
+    if (timerloop) {
         reSet();
         repeatedNo[0].innerText = `0`;
         repeatingNo.value = `1`;
         clearInterval(timerloop);
         timerloop = null;
-        r=0;
+        r = 0;
     }
 }
 playPause[0].addEventListener("click", resetter);
 
+function pauseTimer() {
+    if (timerloop) {
+        clearInterval(timerloop);
+        playPause[1].style.display = "block";
+        playPause[2].style.display = "none";
+        pause = true;
+        console.log(remainingTime);
+    }
+}
+playPause[2].addEventListener("click", pauseTimer);
+
+function repeat() {
+    if (r < repeatValueT) {
+        const minutes = minuteT * 60000,
+            seconds = secondT * 1000;
+        (setTime = minutes + seconds), (futureTime = Date.now() + setTime);
+
+        intervalSetter(repeat);
+        r++;
+    }
+}
 function timerRepeater() {
-    const min = `${selectMenu[0].value}`,
-    sec = `${selectMenu[1].value}`;
+    if (timerloop) {
+        intervalSetter(repeat);
+    } else {
+        (minuteT = `${selectMenu[0].value}`), (secondT = `${selectMenu[1].value}`);
+        repeatValueT = `${repeatingNo.value}`;
 
-    const time = `${min}:${sec}`;
-    
-    if(time.includes("00:00")){
-        return alert("Please, select a valid time");
-    }
+        const time = `${minuteT}:${secondT}`;
 
-    timestamp.classList.add("disable");
-    playPause[1].querySelector('img').src = "./img/pause_FILL0.svg";
-    playPause[1].style.background = "#ff7500";
-    playPause[1].querySelector('img').style.filter = "invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)";
-
-    playPause[0].style.display = "block";
-
-    const repeatValue = `${repeatingNo.value}`;
-
-    function repeat() {
-        if(r < repeatValue){
-            const min = `${selectMenu[0].value}`,
-                sec = `${selectMenu[1].value}`;
-
-                const minutes = min*60000,
-                seconds = sec*1000,
-                setTime = minutes + seconds,
-                startTime = Date.now(),
-                futureTime = startTime + setTime;
-
-            timerloop=setInterval(function() {
-                countDowntimer(min, sec, repeatValue, setTime, futureTime, repeat);
-              }, 1000);
-        
-            r++;
+        if (time.includes("00:00")) {
+            return alert("Please, select a valid time");
         }
+
+        timestamp.classList.add("disable");
+
+        playPause[0].style.display = "block";
+        playPause[1].style.display = "none";
+        playPause[2].style.display = "block";
+
+        repeat();
     }
-    repeat();
 }
 playPause[1].addEventListener("click", timerRepeater);
 
+function intervalSetter(repeat) {
+    timerloop = setInterval(function () {
+        countDowntimer(repeat);
+    }, 1000);
+}
+
 // circular-progress and timer update
-function countDowntimer(min, sec, repeatValue, setTime, futureTime, repeat) {
-    console.log(min, sec, repeatValue, setTime, futureTime);
-    
-    semicircles[0].style.display = 'block';
-    semicircles[1].style.display = 'block';
-    semicircles[2].style.display = 'block';
+function countDowntimer(repeat) {
+    semicircles[0].style.display = "block";
+    semicircles[1].style.display = "block";
+    semicircles[2].style.display = "block";
 
-    const currentTime = Date.now();
-    const remainingTime = futureTime - currentTime;
+    if(pause){
+        pause = false;
+    } else {
+        remainingTime = futureTime - Date.now();
+    }
     const angle = (remainingTime / setTime) * 360;
-
-
-    if(angle > 180) {
-        semicircles[2].style.display = 'none';
-        semicircles[0].style.transform = 'rotate(180deg)';
+    
+    if (angle > 180) {
+        semicircles[2].style.display = "none";
+        semicircles[0].style.transform = "rotate(180deg)";
         semicircles[1].style.transform = `rotate(${angle}deg)`;
     } else {
-        semicircles[2].style.display = 'block';
+        semicircles[2].style.display = "block";
         semicircles[0].style.transform = `rotate(${angle}deg)`;
         semicircles[1].style.transform = `rotate(${angle}deg)`;
     }
 
-    const mins = Math.floor((remainingTime/(1000*60)) % 60).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false}),
-    secs = Math.floor((remainingTime/1000) % 60).toLocaleString('en-US', {minimumIntegerDigits:2, useGrouping:false});
+    const mins = Math.floor((remainingTime / (1000 * 60)) % 60).toLocaleString(
+        "en-US",
+        { minimumIntegerDigits: 2, useGrouping: false }
+    ),
+        secs = Math.floor((remainingTime / 1000) % 60).toLocaleString("en-US", {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+        });
 
     selectMenu[0].value = `${mins}`;
     selectMenu[1].value = `${secs}`;
 
-    if(remainingTime <= 0) {
+    if (remainingTime <= 0) {
         clearInterval(timerloop);
 
-        if(repeatValue == r) {
-            reSet();
-            console.log("if");
+        if (repeatValueT == r) {
+            ringTone2.play();
+            ringTone2.loop = false;
+            resetter();
+            return;
         } else {
-            selectMenu[0].value = `${min}`;
-            selectMenu[1].value = `${sec}`;
-            
-            semicircles[0].style.transform = '';
-            semicircles[1].style.transform = '';
-            semicircles[2].style.transform = '';
+            selectMenu[0].value = `${minuteT}`;
+            selectMenu[1].value = `${secondT}`;
 
-            console.log("else");
-            
+            semicircles[0].style.transform = "";
+            semicircles[1].style.transform = "";
+            semicircles[2].style.transform = "";
         }
         ringTone1.play();
         ringTone1.loop = false;
@@ -153,5 +169,3 @@ function countDowntimer(min, sec, repeatValue, setTime, futureTime, repeat) {
         repeat();
     }
 }
-
-
