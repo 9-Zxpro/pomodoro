@@ -27,8 +27,8 @@
                 <div class="choose-section center">
                     <nav>
                         <ul>
-                            <li><a href="#-">Timer</a></li>
-                            <li><a href="#">Stopwatch</a></li>
+                            <li><a href="#-" tabindex="1">Timer</a></li>
+                            <li><a href="#" tabindex="8">Stopwatch</a></li>
                         </ul>
                         <div id="marker" class="start-home"></div>
                     </nav>
@@ -48,13 +48,13 @@
                             </div>
                             
                             <div class="stopwatch-controller controller-btn center">
-                                <button type="button" id="reset" value="stopper">
+                                <button type="button" id="reset" value="stopper" tabindex="9">
                                     <img src="./img/restart.svg" alt="restart">
                                 </button>
-                                <button type="button" id="play-pause" value="play">
+                                <button type="button" id="play-pause" value="play" tabindex="10">
                                     <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
                                 </button>
-                                <button type="button" id="play-pause" value="pause">
+                                <button type="button" id="play-pause" value="pause" tabindex="11">
                                     <img src="./img/pause_FILL0.svg" alt="play-pause">
                                 </button>
                             </div>
@@ -70,18 +70,18 @@
                                 <div class="outermost-circle"></div>
                                 <div id="time-stamp" class="time-stamp center">
                                     <div id="timer-tiktok" class="tik-tok center">
-                                        <select name="minutes" id="minutes">
+                                        <select name="minutes" id="minutes" tabindex="2">
                                             <option value="00" selected>00</option>
                                         </select>
                                         <strong>:</strong>
-                                        <select name="seconds" id="seconds">
+                                        <select name="seconds" id="seconds" tabindex="3">
                                             <option value="00" selected>00</option>
                                         </select>
                                     </div>
                                     <div class="timer-repeater">
                                         <span>0</span>
                                         <span>/</span>
-                                        <select name="repeater" id="repeater">
+                                        <select name="repeater" id="repeater" tabindex="4">
                                             <option value="1">1</option>
                                         </select>
                                     </div>
@@ -90,13 +90,13 @@
                         </div>
                         
                         <div class="timer-controller controller-btn center">
-                            <button type="button" id="reset">
+                            <button type="button" id="reset" tabindex="5">
                                 <img src="./img/restart.svg" alt="restart">
                             </button>
-                            <button type="button" id="play-pause" value="play">
+                            <button type="button" id="play-pause" value="play" tabindex="6">
                                 <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
                             </button>
-                            <button type="button" id="play-pause" value="pause">
+                            <button type="button" id="play-pause" value="pause" tabindex="7">
                                 <img src="./img/pause_FILL0.svg" alt="play-pause">
                             </button>
                         </div>
@@ -109,10 +109,10 @@
                 </div>
                 <div class="task-dialog ">
                     <div class="input-task-area">
-                        <input type="text" id="input-task" placeholder="Enter task here">
-                        <input type="date" id="due-task-date" name="task-date" title="due task date">
+                        <input type="text" id="input-task" placeholder="Enter task here" tabindex="12">
+                        <input type="date" id="due-task-date" name="task-date" title="due task date" tabindex="13">
                     </div>
-                    <button accesskey="s" type="submit">Add</button>
+                    <button accesskey="s" type="submit" tabindex="14">Add</button>
                 </div>
                 <div class="task-lister">
                     <ul id="task-list">

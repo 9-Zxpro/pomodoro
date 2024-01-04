@@ -280,7 +280,6 @@ nav ul li a {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    outline: none;
     text-align: center;
     border: none;
     color: white;
@@ -437,7 +436,7 @@ nav ul li a {
     padding: 4px 24px;
     font-size: 1em;
     font-weight: 600;
-    outline: none;
+    /* outline: none; */
     border: none;
     border-radius: 40px;
     background-color: var(--skdf);

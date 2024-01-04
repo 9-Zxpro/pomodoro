@@ -15,9 +15,33 @@ function addTask() {
     return;
   }else {
     let li = document.createElement("li");
-    li.innerHTML = inputTask.value;
+    let trimvalue = inputTask.value.trim();
+    if(trimvalue === ""){
+      alert("Task can't be empty.")
+      return;
+    } else {
+      li.innerHTML = trimvalue;
+    }
+
     let p = document.createElement("p");
-    p.innerHTML = duetaskdate.value;
+
+    let userdate = new Date(duetaskdate.value);
+    userdate.setHours (0, 0, 0, 0);
+    let currentdate = new Date();
+    currentdate.setHours (0, 0, 0, 0);
+    let nextthirtyday = new Date(currentdate);
+    nextthirtyday.setMonth(currentdate.getMonth()+1);
+    if(userdate < currentdate) {
+      alert("Enter a valid date, selected date is less than current date.");
+      return
+    }
+    else if(userdate > nextthirtyday ) {
+      alert("Enter a valid date, selected date is 30 day greater than current date.")
+      return
+    } else {
+      p.innerHTML = userdate.toDateString();
+    }
+
     li.appendChild(p);
     tasklist.appendChild(li);
     let img = document.createElement("img");
