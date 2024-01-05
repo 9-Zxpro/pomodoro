@@ -3,45 +3,58 @@
     margin: 0px;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+
+}
+
+:root {
+    --bg-900: rgba(37, 99, 235);
+    --bg-300: rgb(37, 99, 235, 0.3);
+    --bg-100: rgba(239, 246, 255);
+    --gr-900: rgb(4, 186, 49);
+    --gr-500: rgb(165, 250, 151);
+    --gr-300: rgba(4, 186, 49, 0.5);
+    --gr-100: rgb(222, 255, 245);
+    --red-900: rgb(250, 4, 4);
+    --red-300: rgb(251, 95, 95);
+    --white: #fff;
+    --black: #000;
+    --pause: #ff7500;
+    --b1: #b1b1b1;
+    --crossed: #5d5959;
+    --repeater: #08f9ff4d;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 8px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
-:root {
-    --red: #ff3333;
-    --dark-red: #4f1919;
-    --white: #fff;
-    --black: #000;
-    --background: #0f1219;
-    --wheat: #f5deb3;
-    --pause: #ff7500;
-    --green: #125d0d;
-    --light-green: #b7f9ad;
-    /* --light-green: #abf7b1; */
-    --skdf: #08f9ff;
-    --b1: #b1b1b1;
-    --crossed: #818181;
-    --repeater: #08f9ff4d;
+:focus-visible {
+    outline: 1px solid var(--red-300);
+}
+
+.svg-white-to-black {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+
 }
 
 .container {
     width: 100vw;
     height: 100vh;
-    background-color: var(--background);
+    background-color: var(--white);
     overflow-y: auto;
-    /* background-image: linear-gradient(to top left, var(--gradient-1), var(--gradient-2)); */
 }
 
 .center {
@@ -51,18 +64,14 @@
 }
 
 /* header */
-.header {
-    background-color: transparent;
-}
-
 .head-container {
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
     height: 40px;
     padding: 0px 100px 0px 60px;
-    border-bottom: 1px solid var(--repeater);
-    filter: drop-shadow(0 5px 15px var(--skdf));
+    border-bottom: 1px solid var(--bg-900);
+    filter: drop-shadow(0 5px 15px var(--red-900));
 }
 
 .img {
@@ -85,63 +94,64 @@
     flex-direction: row;
     height: calc(100vh - 88px);
     width: 100%;
+    background: var(--white);
 }
 
 .clock-section {
-    border: 1px solid var(--black);
     height: 100%;
     width: 70%;
-    padding: 20px;
+    margin: 20px;
     overflow-y: auto;
 }
 
 .choose-section {
-    border: 1px solid var(--black);
-    height: 120px;
-    margin: 30px auto;
+    height: 80px;
+    margin: 15px auto;
     flex-direction: row;
 }
 
-.choose-section nav{
+.choose-section nav {
     position: relative;
-    background: var(--background);
-    
-    
 }
+
 nav ul {
     display: flex;
 }
+
 nav ul li {
     list-style: none;
     padding: 15px 25px;
 }
+
 nav ul li a {
     position: relative;
     text-decoration: none;
     padding: 15px 25px;
-    color: var(--white);
-    font-weight: 400;
+    color: var(--bg-900);
+    font-size: 1.5em;
+    font-weight: 600;
     letter-spacing: 0.1em;
 }
-  
+
 #marker {
     position: absolute;
     bottom: 0;
     left: 25px;
     height: 100%;
-    width: 98px;
-    border-bottom: 5px solid var(--skdf);
-    background: linear-gradient(0deg, var(--repeater), transparent);
+    width: 126px;
+    border: 1px solid var(--gr-900);
+    border-bottom: 5px solid var(--gr-900);
+    border-radius: 10px;
+    /* background: linear-gradient(0deg, var(--gr-100), transparent); */
     transition: 0.5s;
     pointer-events: none;
-    filter: drop-shadow(0 5px 25px var(--skdf));
+    /* filter: drop-shadow(0 5px 25px var(--gr-900)); */
 }
 
 /* times */
 .time-dialogue {
     position: relative;
-    border: 1px solid var(--black);
-    height: 393px;
+    height: 530px;
     margin: auto;
 }
 
@@ -153,8 +163,8 @@ nav ul li a {
 
 .timer-countdown-box {
     position: relative;
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
 }
 
 .controller-btn {
@@ -164,44 +174,67 @@ nav ul li a {
 }
 
 .controller-btn button {
-    background-color: var(--skdf);
-    border: none;
-    padding: 15px 40px 13px;
+    padding: 15px 80px 13px;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.controller-btn button:hover {
-    background-color: var(--pause);
-}
-
-.controller-btn button:hover img {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-}
-
 .controller-btn button:nth-child(1) {
+    border: 2px solid var(--bg-900);
+    background-color: var(--bg-900);
     display: none;
+}
+
+.controller-btn button:nth-child(2) {
+    border: 2px solid var(--gr-900);
+    background-color: var(--gr-900);
 }
 
 .controller-btn button:nth-child(3) {
+    border: 2px solid var(--pause);
     background-color: var(--pause);
     display: none;
+
 }
 
-.controller-btn button:nth-child(3) img {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+.controller-btn button:nth-child(1):hover {
+    background-color: transparent;
+    transition: 0.1s;
 }
+
+.controller-btn button:nth-child(2):hover {
+    background-color: transparent;
+    transition: 0.1s;
+}
+
+.controller-btn button:nth-child(3):hover {
+    background-color: transparent;
+    transition: 0.1s;
+}
+
+.controller-btn button:nth-child(1):hover svg {
+    fill: var(--bg-900);
+}
+
+.controller-btn button:nth-child(2):hover svg {
+    fill: var(--gr-900);
+}
+
+.controller-btn button:nth-child(3):hover svg {
+    fill: var(--pause);
+}
+
+
 
 .timer-countdown {
     position: absolute;
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
     border-radius: 50%;
-    color: #fff;
-    background-color: white;
+    color: var(--bg-900);
+    background-color: var(--bg-900);
     overflow: hidden;
     z-index: 1;
-    /* visibility: hidden; */
 }
 
 .semicircle {
@@ -214,27 +247,27 @@ nav ul li a {
 }
 
 .semicircle:nth-child(1) {
-    /* background-color: red; */
     background-color: var(--pause);
     z-index: 2;
+    display: none;
 }
 
 .semicircle:nth-child(2) {
-    /* background-color: blue; */
     background-color: var(--pause);
     z-index: 3;
+    display: none;
 }
 
 .semicircle:nth-child(3) {
-    background-color: white;
+    background-color: var(--bg-900);
     z-index: 4;
-    /* display: none; */
+    display: none;
 }
 
 .outermost-circle {
-    width: 240px;
-    height: 240px;
-    background-color: var(--background);
+    width: 390px;
+    height: 390px;
+    background-color: var(--bg-100);
     border-radius: 50%;
     z-index: 5;
     /* display: none; */
@@ -267,10 +300,9 @@ nav ul li a {
 }
 
 .tik-tok {
-    width: 200px;
-    height: 70px;
+    width: 250px;
+    height: 100px;
     margin-top: 30px;
-    background-color: var(--background);
     z-index: 7;
     flex-direction: row;
 }
@@ -282,52 +314,37 @@ nav ul li a {
     appearance: none;
     text-align: center;
     border: none;
-    color: white;
-    background-color: var(--background);
-    font-size: 40px;
+    color: var(--bg-900);
+    background-color: var(--bg-100);
+    font-size: 80px;
     cursor: pointer;
 }
+
 .tik-tok select option {
-    
     font-size: 25px;
 }
-.tik-tok span {
-    display: block;
-    text-align: center;
-    font-size: 40px;
-    color: white;
-    background-color: var(--background);
-}
 
-.tik-tok .colon {
-    margin-bottom: 5px;
-    padding: 0 4px;
+.tik-tok span {
+    text-align: center;
+    font-size: 4em;
     font-family: poppins;
 }
 
 .timer-repeater {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .timer-repeater select {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0 5px;
-    border: 1px solid var(--repeater);
+    border: 1px solid var(--red-300);
     border-radius: 15px;
 }
 
 .timer-repeater span {
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
-.tik-tok strong {
-    font-size: 30px;
-    margin-bottom: 5px;
-    padding: 0 4px;
-    font-family: poppins;
-}
-
-/* end-timer-section */
 
 /* stopwatch-section */
 .stopwatch-block {
@@ -338,72 +355,77 @@ nav ul li a {
 
 .stopwatch-countdown-box {
     position: relative;
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
 }
 
 .stopwatch-countdown {
     position: absolute;
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
     border-radius: 50%;
-    color: #fff;
-    filter: drop-shadow(0 1px 4px var(--skdf));
+    background-color: var(--bg-300);
+    color: var(--bg-900);
     overflow: hidden;
     z-index: 1;
 }
 
 .inner-circle {
-    width: 240px;
-    height: 240px;
-    background-color: var(--background);
+    width: 390px;
+    height: 390px;
+    background-color: var(--bg-100);
     border-radius: 50%;
     z-index: 5;
 }
 
 #stopwatch-tiktok {
-    width: 100%;
+    width: 300px;
 }
 
 #stopwatch-tiktok p {
-    width: 200px;
+    width: 300px;
     display: block;
-    margin-left: 30px;
-    font-size: 2em;
+    margin-left: 10px;
+    font-size: 4em;
     font-family: 'Segoe UI';
 }
 
 #stopwatch-tiktok p span {
-    color: var(--skdf);
-    font-size: 20px;
+    color: var(--gr-900);
+    font-size: 40px;
 }
 
 /* .task-section */
 .task-section {
     position: relative;
     height: 100%;
-    width: 34%;
+    width: 30%;
     padding: 20px;
-    border-left: 4px solid var(--skdf);
+    border-left: 2px solid var(--bg-900);
+    background-color: var(--white);
 }
 
 .to-do-app {
     width: 100%;
-    /* background-color: var(--skdf); */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.to-do-app h2 {
+.to-do-app p {
     display: flex;
     margin-left: 10px;
     align-items: center;
-    color: white;
+    font-size: 2em;
+    font-weight: 600;
 }
 
 .to-do-app img {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
     margin-left: 10px;
     width: 30px;
+}
+
+.box-shadow-bottom {
+    padding-bottom: 12px;
+    box-shadow: 0px 8px 12px -8px rgb(0, 0, 0, 0.2);
 }
 
 .task-dialog {
@@ -411,7 +433,8 @@ nav ul li a {
     justify-content: space-between;
     border-radius: 40px;
     padding: 10px;
-    background-color: white;
+    margin-bottom: 10px;
+    border: 3px solid var(--bg-300);
 }
 
 .input-task-area input {
@@ -436,33 +459,62 @@ nav ul li a {
     padding: 4px 24px;
     font-size: 1em;
     font-weight: 600;
-    /* outline: none; */
     border: none;
+    color: #fff;
     border-radius: 40px;
-    background-color: var(--skdf);
+    background-color: var(--gr-900);
+    border: 2px solid var(--gr-300);
     cursor: pointer;
+
+}
+
+.task-dialog button:hover {
+    background-color: transparent;
+    color: var(--gr-900);
+    transition: 0.2s;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.margin-right-10 {
+    margin: 0 10px 0 0;
 }
 
 .task-lister {
-    margin-top: 16px;
     overflow-y: auto;
     height: calc(100% - 150px);
+    padding-top: 8px;
     scroll-behavior: auto;
 }
 
-.task-lister ul li {
+.task-lister div h4 {
+    color: #000;
+}
+
+.task-lister div hr {
+    border: 1px solid #000;
+    margin-top: 2px;
+}
+
+.task-lister div ul {
+    margin: 10px 0;
+}
+
+.task-lister div ul li {
     list-style: none;
     font-size: 1em;
     padding: 16px 16px 16px 40px;
     user-select: none;
-    margin-top: 10px;
-    background-color: var(--wheat);
+    margin: 10px 0 0 0;
+    background-color: var(--bg-100);
     border-radius: 40px;
     position: relative;
     cursor: pointer;
 }
 
-.task-lister ul li::before {
+.task-lister div ul li::before {
     content: '';
     position: absolute;
     height: 24px;
@@ -473,54 +525,80 @@ nav ul li a {
     top: calc(50% - 12px);
 }
 
-.task-lister ul li:hover::before {
+#other-task-list li:hover::before {
+    display: none;
+}
+
+.task-lister div ul li:hover::before {
     background-image: url(./img/check_circle.svg);
     filter: invert(62%) sepia(65%) saturate(3453%) hue-rotate(91deg) brightness(56%) contrast(102%);
 
 }
 
-.task-lister ul li.task-done {
+.task-lister div ul li.task-done {
     color: var(--crossed);
     font-weight: 300;
     text-decoration: line-through;
-    background-color: var(--light-green);
-    opacity: 70%;
+    background-color: var(--gr-500);
 }
 
-.task-lister ul li.task-done::before {
+.task-lister div ul li.task-done::before {
     background-image: url(./img/task_alt_black_24dp.svg);
     filter: invert(62%) sepia(65%) saturate(3453%) hue-rotate(91deg) brightness(56%) contrast(102%);
 
 }
 
-.task-lister ul li p {
+.task-lister div ul li p {
     position: absolute;
     right: 40px;
     bottom: 2px;
     font-size: .7em;
 }
 
-.task-lister ul li img {
+.task-lister div ul li div {
     position: absolute;
-    right: 12px;
-    padding: 4px;
-    background-color: var(--red);
-    border-radius: 50%;
-    top: calc(50% - 16px);
+    right: 4px;
+    padding: 2px 4px;
+    margin: 0;
+    border-radius: 20px;
+    background-color: transparent;
+    top: calc(50% - 18px);
     opacity: 0;
 }
 
-.task-lister ul li:hover img {
+.task-lister div ul li div img {
+    border-radius: 50%;
+    padding: 4px;
+    margin: 0 4px;
+}
+
+.task-lister div ul li div img:nth-child(1) {
+    background-color: var(--red-300);
+
+}
+
+.task-lister div ul li div img:nth-child(2) {
+    background-color: var(--gr-300);
+
+}
+
+.task-lister div ul li:hover div {
     opacity: 100;
-    transition: 1s;
+    transition: 0.5s;
+}
+
+#daily-task-list li:hover div img:nth-child(2) {
+    display: none;
 }
 
 
 /* footer start */
 .footer {
     padding: 14px;
-    color: wheat;
-    border-top: 1px solid var(--repeater);
-    border-bottom: 1px solid var(--repeater);
-    filter: drop-shadow(0 5px 15px var(--skdf));
+    border-top: 1px solid var(--bg-900);
+}
+
+.footer p {
+    filter: drop-shadow(0 12px 15px #a70101);
+    color: var(--bg-900);
 }

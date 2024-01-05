@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro</title>
+    <title>Pomodoro Timer</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="js/clock-select.js" type="module"></script>
@@ -49,13 +49,13 @@
                             
                             <div class="stopwatch-controller controller-btn center">
                                 <button type="button" id="reset" value="stopper" tabindex="9">
-                                    <img src="./img/restart.svg" alt="restart">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/></g></g></svg>
                                 </button>
                                 <button type="button" id="play-pause" value="play" tabindex="10">
-                                    <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
                                 </button>
                                 <button type="button" id="play-pause" value="pause" tabindex="11">
-                                    <img src="./img/pause_FILL0.svg" alt="play-pause">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
                                 </button>
                             </div>
                             
@@ -73,7 +73,7 @@
                                         <select name="minutes" id="minutes" tabindex="2">
                                             <option value="00" selected>00</option>
                                         </select>
-                                        <strong>:</strong>
+                                        <span>:</span>
                                         <select name="seconds" id="seconds" tabindex="3">
                                             <option value="00" selected>00</option>
                                         </select>
@@ -91,13 +91,13 @@
                         
                         <div class="timer-controller controller-btn center">
                             <button type="button" id="reset" tabindex="5">
-                                <img src="./img/restart.svg" alt="restart">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/></g></g></svg>
                             </button>
                             <button type="button" id="play-pause" value="play" tabindex="6">
-                                <img src="./img/play_arrow_FILL0.svg" alt="play-pause">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
                             </button>
                             <button type="button" id="play-pause" value="pause" tabindex="7">
-                                <img src="./img/pause_FILL0.svg" alt="play-pause">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -105,24 +105,44 @@
             </div>
             <div class="task-section">
                 <div class="to-do-app">
-                    <h2>Task<img src="./img/view_list_black_24dp.svg" alt=""></h2>
+                    <p>Task<img src="./img/view_list_black_24dp.svg" alt=""></p>
                 </div>
-                <div class="task-dialog ">
-                    <div class="input-task-area">
-                        <input type="text" id="input-task" placeholder="Enter task here" tabindex="12">
-                        <input type="date" id="due-task-date" name="task-date" title="due task date" tabindex="13">
+                <div class="box-shadow-bottom">
+                    <div class="task-dialog ">
+                        <div class="input-task-area">
+                            <input type="text" id="input-task" placeholder="Enter task here" tabindex="12">
+                            <input type="date" id="due-task-date" name="task-date" title="due task date" tabindex="13">
+                        </div>
+                        <button accesskey="s" type="submit" tabindex="14">Add</button>
                     </div>
-                    <button accesskey="s" type="submit" tabindex="14">Add</button>
                 </div>
                 <div class="task-lister">
-                    <ul id="task-list">
-                        <li>ghgjhjhjghi <p>09-03-2024</p></li>
-                    </ul>
+                    <div class="daily-text-bar margin-right-10">
+                        <h4>Daily</h4>
+                        <hr>
+                        <ul id="daily-task-list">
+                            
+                        </ul>
+                    </div>
+                    <div class="today-text-bar margin-right-10">
+                        <h4>Today</h4>
+                        <hr>
+                        <ul id="today-task-list">
+                            
+                        </ul>
+                    </div>
+                    <div class="other-text-bar margin-right-10">
+                        <h4>Others</h4>  
+                        <hr>
+                        <ul id="other-task-list">
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="footer center">
-            <p>copyright reserved by jaitriya</p>
+            <p>Just look at your Family</p>
         </div>
     </div>
 </body>

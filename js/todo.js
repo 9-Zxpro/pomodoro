@@ -3,8 +3,8 @@
 
 const inputTask = document.getElementById("input-task");
 const duetaskdate = document.getElementById("due-task-date");
-const tasklist = document.getElementById("task-list");
 const addtask = document.querySelector(".task-dialog button");
+const tasklist = document.querySelectorAll(".task-lister div ul");
 
 function addTask() {
   if (inputTask.value === "") {
@@ -13,11 +13,11 @@ function addTask() {
   } else if (duetaskdate.value === "") {
     alert("please, enter a date");
     return;
-  }else {
+  } else {
     let li = document.createElement("li");
     let trimvalue = inputTask.value.trim();
-    if(trimvalue === ""){
-      alert("Task can't be empty.")
+    if (trimvalue === "") {
+      alert("Task can't be empty.");
       return;
     } else {
       li.innerHTML = trimvalue;
@@ -26,32 +26,53 @@ function addTask() {
     let p = document.createElement("p");
 
     let userdate = new Date(duetaskdate.value);
-    userdate.setHours (0, 0, 0, 0);
+    userdate.setHours(0, 0, 0, 0);
     let currentdate = new Date();
-    currentdate.setHours (0, 0, 0, 0);
+    currentdate.setHours(0, 0, 0, 0);
     let nextthirtyday = new Date(currentdate);
-    nextthirtyday.setMonth(currentdate.getMonth()+1);
-    if(userdate < currentdate) {
+    nextthirtyday.setMonth(currentdate.getMonth() + 1);
+    if (userdate < currentdate) {
       alert("Enter a valid date, selected date is less than current date.");
-      return
-    }
-    else if(userdate > nextthirtyday ) {
-      alert("Enter a valid date, selected date is 30 day greater than current date.")
-      return
+      return;
+    } else if (userdate > nextthirtyday) {
+      alert(
+        "Enter a valid date, selected date is 30 day greater than current date."
+      );
+      return;
     } else {
-      p.innerHTML = userdate.toDateString();
+      if (userdate.getTime() == currentdate.getTime()) {
+        listMaker();
+        tasklist[1].appendChild(li);
+        saveDataToday();
+      } else {
+        listMaker();
+        tasklist[2].appendChild(li);
+        saveDataOthers();
+      }
     }
 
-    li.appendChild(p);
-    tasklist.appendChild(li);
-    let img = document.createElement("img");
-    img.src = "./img/close.svg";
-    img.alt = "close-task";
-    li.appendChild(img);
+    function listMaker() {
+      p.innerHTML = userdate.toDateString();
+      li.appendChild(p);
+      let div = document.createElement("div");
+      let img1 = document.createElement("img");
+      let img2 = document.createElement("img");
+      img1.src = "./img/close.svg";
+      img1.alt = "close-task";
+      img1.id = "close-task";
+      img1.title = "delete";
+      img2.src = "./img/move_up.svg";
+      img2.alt = "close-task";
+      img2.id = "move-task";
+      img2.title = "move to daily";
+      div.appendChild(img1);
+      div.appendChild(img2);
+      li.appendChild(div);
+    }
   }
   inputTask.value = "";
   duetaskdate.value = "";
-  saveData();
+
 }
 
 addtask.addEventListener("click", () => {
@@ -64,29 +85,85 @@ inputTask.addEventListener("keyup", function (event) {
   }
 });
 duetaskdate.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-      addTask();
-    }
+  if (event.key === "Enter") {
+    addTask();
+  }
 });
 
-tasklist.addEventListener(
+tasklist[0].addEventListener(
   "click",
   function (e) {
-    if (e.target.tagName === "LI") {
+    if (e.target.tagName === "LI" && e.target.parentElement.id === "daily-task-list") {
       e.target.classList.toggle("task-done");
-      saveData();
-    } else if (e.target.tagName === "IMG") {
-      e.target.parentElement.remove();
-      saveData();
+      saveDataDaily();
+    } else if (e.target.tagName === "IMG" && e.target.id === "close-task") {
+      let answer = window.confirm("Do you want to delet?");
+      if (answer == true) {
+        e.target.parentElement.parentElement.remove();
+        saveDataDaily();
+      }
     }
   },
   false
 );
 
-function saveData() {
-  localStorage.setItem("list", tasklist.innerHTML);
+tasklist[1].addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "LI" && e.target.parentElement.id === "today-task-list") {
+      e.target.classList.toggle("task-done");
+      saveDataToday();
+    } else if (e.target.tagName === "IMG" && e.target.id === "close-task") {
+      let answer = window.confirm("Do you want to delet?");
+      if (answer == true) {
+        e.target.parentElement.parentElement.remove();
+        saveDataToday();
+      }
+    } else if (e.target.tagName === "IMG" && e.target.id === "move-task") {
+      let li = document.createElement("li");
+      li.innerHTML = e.target.parentElement.parentElement.innerHTML;
+      e.target.parentElement.parentElement.remove();
+      tasklist[0].appendChild(li);
+      saveDataDaily();
+      saveDataToday();
+    }
+  },
+  false
+);
+
+tasklist[2].addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "IMG" && e.target.id === "close-task") {
+      let answer = window.confirm("Do you want to delet?");
+      if (answer == true) {
+        e.target.parentElement.parentElement.remove();
+        saveDataOthers();
+      }
+    } else if (e.target.tagName === "IMG" && e.target.id === "move-task") {
+      let li = document.createElement("li");
+      li.innerHTML = e.target.parentElement.parentElement.innerHTML;
+      e.target.parentElement.parentElement.remove();
+      tasklist[1].appendChild(li);
+      saveDataToday();
+      saveDataOthers();
+    }
+  },
+  false
+);
+
+function saveDataDaily() {
+  localStorage.setItem("dailyList", tasklist[0].innerHTML);
+}
+function saveDataToday() {
+  localStorage.setItem("todayList", tasklist[1].innerHTML);
+}
+function saveDataOthers() {
+  localStorage.setItem("othersList", tasklist[2].innerHTML);
 }
 function showTasks() {
-  tasklist.innerHTML = localStorage.getItem("list");
+  tasklist[0].innerHTML = localStorage.getItem("dailyList");
+  tasklist[1].innerHTML = localStorage.getItem("todayList");
+  tasklist[2].innerHTML = localStorage.getItem("othersList");
 }
 showTasks();

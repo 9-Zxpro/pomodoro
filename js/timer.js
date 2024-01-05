@@ -3,7 +3,8 @@ const semicircles = document.querySelectorAll(".semicircle"),
     timestamp = document.querySelector("#time-stamp"),
     selectMenu = document.querySelectorAll("#timer-tiktok select"),
     repeatingNo = document.querySelector(".timer-repeater select"),
-    repeatedNo = document.querySelectorAll(".timer-repeater span");
+    repeatedNo = document.querySelectorAll(".timer-repeater span"),
+    docTitle = document.title;
 
 let ringTone1 = new Audio("./img/triangle-metal.mp3");
 let ringTone2 = new Audio("./img/tuntun.mp3");
@@ -15,6 +16,7 @@ let minuteT = 0,
 
 let timerloop,
     r = 0;
+
 let setTime,
     futureTime,
     remainingTime,
@@ -38,6 +40,7 @@ for (let i = 150; i > 1; i--) {
 function reSet() {
     selectMenu[0].value = `00`;
     selectMenu[1].value = `00`;
+    document.title = docTitle;
 
     semicircles[0].style.display = "none";
     semicircles[1].style.display = "none";
@@ -111,7 +114,7 @@ function intervalSetter(repeat) {
 
 // circular-progress and timer update
 function countDowntimer(repeat) {
-    if(pause){
+    if (pause) {
         playPause[2].style.display = "block";
         playPause[1].style.display = "none";
         pause = false;
@@ -122,9 +125,9 @@ function countDowntimer(repeat) {
     semicircles[0].style.display = "block";
     semicircles[1].style.display = "block";
     semicircles[2].style.display = "block";
-   
+
     const angle = (remainingTime / setTime) * 360;
-    
+
     if (angle > 180) {
         semicircles[2].style.display = "none";
         semicircles[0].style.transform = "rotate(180deg)";
@@ -135,25 +138,25 @@ function countDowntimer(repeat) {
         semicircles[1].style.transform = `rotate(${angle}deg)`;
     }
 
-    const mins = Math.floor(remainingTime / 60).toLocaleString(
-        "en-US",
-        { minimumIntegerDigits: 2, useGrouping: false }
-    ),
-        secs = Math.floor(remainingTime % 60).toLocaleString(
-            "en-US",
-            { minimumIntegerDigits: 2, useGrouping: false}
-        );
-        
+    const mins = Math.floor(remainingTime / 60).toLocaleString("en-US", {
+        minimumIntegerDigits: 2,
+        useGrouping: false,
+    }),
+        secs = Math.floor(remainingTime % 60).toLocaleString("en-US", {
+            minimumIntegerDigits: 2,
+            useGrouping: false,
+        });
+
     selectMenu[0].value = `${mins}`;
     selectMenu[1].value = `${secs}`;
-    document.title = `${mins}`+":"+`${secs}` + " Focus time";
+    document.title = `${mins}` + ":" + `${secs}` + " Focus time";
 
     if (remainingTime <= 0) {
         clearInterval(timerloop);
         if (repeatValueT == r) {
             ringTone2.play();
             ringTone2.loop = false;
-            resetter();
+            setTimeout(resetter, 5000);
             return;
         } else {
             selectMenu[0].value = `${minuteT}`;
