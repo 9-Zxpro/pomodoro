@@ -9,7 +9,7 @@
 :root {
     --bg-900: rgba(37, 99, 235);
     --bg-300: rgb(37, 99, 235, 0.3);
-    --bg-100: rgba(239, 246, 255);
+    --bg-100: rgb(229, 240, 255);
     --gr-900: rgb(4, 186, 49);
     --gr-500: rgb(165, 250, 151);
     --gr-300: rgba(4, 186, 49, 0.5);
@@ -92,7 +92,6 @@
 /* main-page */
 .main-page {
     flex-direction: row;
-    height: calc(100vh - 88px);
     width: 100%;
     background: var(--white);
 }
@@ -101,7 +100,7 @@
     height: 100%;
     width: 70%;
     margin: 20px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .choose-section {
@@ -313,7 +312,8 @@ nav ul li a {
     -moz-appearance: none;
     appearance: none;
     text-align: center;
-    border: none;
+    border: 1px solid var(--pause);
+    border-radius: 8px;
     color: var(--bg-900);
     background-color: var(--bg-100);
     font-size: 80px;
@@ -338,7 +338,7 @@ nav ul li a {
     font-size: 2em;
     padding: 0 5px;
     border: 1px solid var(--red-300);
-    border-radius: 15px;
+    border-radius: 8px;
 }
 
 .timer-repeater span {
@@ -490,11 +490,11 @@ nav ul li a {
 }
 
 .task-lister div h4 {
-    color: #000;
+    color: var(--gr-900);
 }
 
 .task-lister div hr {
-    border: 1px solid #000;
+    border: 1px solid var(--gr-900);
     margin-top: 2px;
 }
 
@@ -509,7 +509,8 @@ nav ul li a {
     user-select: none;
     margin: 10px 0 0 0;
     background-color: var(--bg-100);
-    border-radius: 40px;
+    border: 1px solid var(--bg-300);
+    border-radius: 16px;
     position: relative;
     cursor: pointer;
 }
@@ -573,12 +574,12 @@ nav ul li a {
 }
 
 .task-lister div ul li div img:nth-child(1) {
-    background-color: var(--red-300);
+    background-color: var(--pause);
 
 }
 
 .task-lister div ul li div img:nth-child(2) {
-    background-color: var(--gr-300);
+    background-color: var(--gr-900);
 
 }
 
@@ -589,6 +590,12 @@ nav ul li a {
 
 #daily-task-list li:hover div img:nth-child(2) {
     display: none;
+}
+.diff-task-list {
+    border: 2px solid var(--pause);
+    border-radius: 16px;
+    padding: 8px;
+    margin-bottom: 10px;
 }
 
 
@@ -602,3 +609,42 @@ nav ul li a {
     filter: drop-shadow(0 12px 15px #a70101);
     color: var(--bg-900);
 }
+
+
+/* -----@media queries----- */
+@media only screen and (max-width: 762px) {
+    .main-page {
+        flex-direction: column;
+    }
+    .clock-section{
+        width: 100%;
+        /* overflow: scroll; */
+    }
+    .task-section{
+        width: 100%;
+    }
+    .timer-countdown-box {
+        height: 300px;
+        width:300px;
+    }
+    .timer-countdown {
+        height: 300px;
+        width:300px;
+    }
+    .outermost-circle {
+        height: 290px;
+        width:290px;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 762px) {
+    .task-section{
+        width: 40%;
+    }
+}
+@media only screen and (min-width: 762px) {
+    .main-page {
+        height: calc(100vh - 88px);
+    }
+}
+ 
+
