@@ -9,7 +9,7 @@
 :root {
     --bg-900: rgba(37, 99, 235);
     --bg-300: rgb(37, 99, 235, 0.3);
-    --bg-100: rgb(229, 240, 255);
+    --bg-100: rgb(243, 249, 255);
     --gr-900: rgb(4, 186, 49);
     --gr-500: rgb(165, 250, 151);
     --gr-300: rgba(4, 186, 49, 0.5);
@@ -540,7 +540,8 @@ nav ul li a {
     color: var(--crossed);
     font-weight: 300;
     text-decoration: line-through;
-    background-color: var(--gr-500);
+    border: 1px solid var(--gr-300);
+    background-color: var(--gr-100);
 }
 
 .task-lister div ul li.task-done::before {
