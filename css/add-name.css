@@ -1,0 +1,50 @@
+:root {
+    --gr-900: rgb(4, 186, 49);
+    --pause: #ff7500;
+}
+
+.add-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 150px;
+    width: 300px;
+    border: 3px solid var(--gr-900);
+    border-radius: 16px ;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    /* filter: blur(8px); */
+    /* backdrop-filter: blur(8px); */
+}
+.naming-blk {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+.naming-blk input {
+    width: 200px;
+    padding: 8px;
+    outline: none;
+    border: 2px solid var(--pause);
+    border-radius: 8px;
+}
+#set-name {
+    padding: 4px 16px ;
+    margin-top: 20px;
+    font-weight: 550;
+    color: white;
+    background-color: var(--gr-900);
+    border: 2px solid var(--gr-900);
+    border-radius: 8px;
+    cursor: pointer;
+}
+#set-name:hover {
+    color: var(--gr-900);
+    font-weight: 600;
+    background-color: transparent;
+    border: 2px solid var(--gr-900);
+}

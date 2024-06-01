@@ -1,0 +1,41 @@
+/* -----@media queries----- */
+@media only screen and (max-width: 942px) {
+    .main-page {
+        flex-direction: column;
+    }
+    .clock-section{
+        width: 100%;
+        /* overflow: scroll; */
+    }
+    .task-section{
+        width: 100%;
+    }
+    .timer-countdown-box, .stopwatch-countdown-box {
+        height: 300px;
+        width:300px;
+    }
+    .timer-countdown, .stopwatch-countdown {
+        height: 300px;
+        width:300px;
+    }
+    .outermost-circle, .inner-circle {
+        height: 290px;
+        width:290px;
+    }
+    #stopwatch-tiktok p {
+        font-size: 3em;
+    }
+    #stopwatch-tiktok p span {
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 942px) {
+    .task-section{
+        width: 40%;
+    }
+}
+@media only screen and (min-width: 942px) {
+    .main-page {
+        height: calc(100vh - 88px);
+    }
+}

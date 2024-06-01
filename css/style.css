@@ -86,7 +86,9 @@
 }
 
 .name span {
-    color: var(--b1);
+    color: var(--pause);
+    text-transform: uppercase;
+    letter-spacing: 0.25ch;
 }
 
 /* main-page */
@@ -383,9 +385,8 @@ nav ul li a {
 }
 
 #stopwatch-tiktok p {
-    width: 300px;
     display: block;
-    margin-left: 10px;
+    margin: auto;
     font-size: 4em;
     font-family: 'Segoe UI';
 }
@@ -612,40 +613,6 @@ nav ul li a {
 }
 
 
-/* -----@media queries----- */
-@media only screen and (max-width: 762px) {
-    .main-page {
-        flex-direction: column;
-    }
-    .clock-section{
-        width: 100%;
-        /* overflow: scroll; */
-    }
-    .task-section{
-        width: 100%;
-    }
-    .timer-countdown-box {
-        height: 300px;
-        width:300px;
-    }
-    .timer-countdown {
-        height: 300px;
-        width:300px;
-    }
-    .outermost-circle {
-        height: 290px;
-        width:290px;
-    }
-}
-@media only screen and (max-width: 1024px) and (min-width: 762px) {
-    .task-section{
-        width: 40%;
-    }
-}
-@media only screen and (min-width: 762px) {
-    .main-page {
-        height: calc(100vh - 88px);
-    }
-}
+
  
 

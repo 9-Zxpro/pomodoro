@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomodoro Timer</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/add-name.css">
     <script src="js/clock-select.js" type="module"></script>
 </head>
 <body>
-    <div class="container">
+    <!-- -------add name------- -->
+    <div class="add-name" id="addname">
+        <div class="naming-blk center">
+            <label for="naming">Please! Enter your name:</label>
+            <input type="text" id="naming">
+            <button type="button" id="set-name">
+                Ok
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="main-container">
 
         <!-- header -->
         <div class="header center", id="header-id">
@@ -17,12 +30,14 @@
                 <div class="img center">
                     <img src="./img/jaitriya-icon.png" alt="profile-photo">
                 </div>
-                <div class="name center"><span>patelji</span></div>
+                <div class="name center"><span>name</span></div>
             </div>
         </div>
 
         <!-- main-page -->
         <div class="main-page center">
+
+            <!-- --------clock section--------------- -->
             <div class="clock-section">
                 <div class="choose-section center">
                     <nav>
@@ -103,6 +118,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- --------task section--------------- -->
             <div class="task-section">
                 <div class="to-do-app">
                     <p>Add Task<img src="./img/view_list_black_24dp.svg" alt=""></p>
@@ -166,4 +183,5 @@
 <script src="js/timer.js" type="module"></script>
 <script src="js/stopwatch.js" type="module"></script>
 <script src="js/todo.js" type="module"></script>
+<script src="js/addname.js" type="module"></script>
 </html>
