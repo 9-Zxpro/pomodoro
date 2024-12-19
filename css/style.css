@@ -1,44 +1,43 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
-
-}
-
 :root {
-    --bg-900: rgba(37, 99, 235);
-    --bg-300: rgb(37, 99, 235, 0.3);
-    --bg-100: rgb(243, 249, 255);
-    --gr-900: rgb(4, 186, 49);
-    --gr-500: rgb(165, 250, 151);
-    --gr-300: rgba(4, 186, 49, 0.5);
-    --gr-100: rgb(222, 255, 245);
-    --red-900: rgb(250, 4, 4);
-    --red-300: rgb(251, 95, 95);
+    --gray-900: #1a1a1a;
+    --gray-500: #424242;
+    --gray-200: #656363;
+    --gr-900: #0a4a00;
+    --gr-300: #04ba3180;
+    --gr-100: #defff5;
+    --red-900: #8b0606;
+    --red-300: #d93131;
     --white: #fff;
+    --text: #a09f9f;
     --black: #000;
     --pause: #ff7500;
     --b1: #b1b1b1;
     --crossed: #5d5959;
     --repeater: #08f9ff4d;
 }
-
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #1a1a1a;
+    color: var(--text);
+}
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--gray-900);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--gray-500);
     border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--gray-500);
 }
 
 :focus-visible {
@@ -53,7 +52,7 @@
 .container {
     width: 100vw;
     height: 100vh;
-    background-color: var(--white);
+    background-color: var(--gray-900);
     overflow-y: auto;
 }
 
@@ -70,8 +69,8 @@
     width: 100%;
     height: 40px;
     padding: 0px 100px 0px 60px;
-    border-bottom: 1px solid var(--bg-900);
-    filter: drop-shadow(0 5px 15px var(--red-900));
+    border-bottom: 1px solid var(--gray-500);
+    /* filter: drop-shadow(0 5px 15px var(--red-900)); */
 }
 
 .img {
@@ -84,30 +83,8 @@
     height: 100%;
     width: 100%;
 }
-
-.name span {
-    color: var(--pause);
-    text-transform: uppercase;
-    letter-spacing: 0.25ch;
-}
-
-/* main-page */
-.main-page {
-    flex-direction: row;
-    width: 100%;
-    background: var(--white);
-}
-
-.clock-section {
-    height: 100%;
-    width: 70%;
-    margin: 20px;
-    overflow-y: scroll;
-}
-
 .choose-section {
-    height: 80px;
-    margin: 15px auto;
+    height: 100%;
     flex-direction: row;
 }
 
@@ -121,32 +98,46 @@ nav ul {
 
 nav ul li {
     list-style: none;
-    padding: 15px 25px;
+    padding: 5px 10px;
 }
 
 nav ul li a {
     position: relative;
     text-decoration: none;
-    padding: 15px 25px;
-    color: var(--bg-900);
-    font-size: 1.5em;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    color: var(--text);
+    font-size: 1em;
+    font-weight: 400;
+}
+.name span {
+    color: var(--pause);
+    text-transform: uppercase;
+    letter-spacing: 0.25ch;
+}
+
+/* main-page */
+.main-page {
+    flex-direction: row;
+    width: 100%;
+    background: var(--gray-900);
+}
+
+.clock-section {
+    height: 100%;
+    width: 70%;
+    margin: 20px 0;
+    overflow-y: scroll;
 }
 
 #marker {
     position: absolute;
-    bottom: 0;
-    left: 25px;
-    height: 100%;
-    width: 126px;
+    color: var(--white);
     border: 1px solid var(--gr-900);
-    border-bottom: 5px solid var(--gr-900);
+    border-bottom: 3px solid var(--gr-900);
     border-radius: 10px;
-    /* background: linear-gradient(0deg, var(--gr-100), transparent); */
+    background: transparent;
     transition: 0.5s;
     pointer-events: none;
-    /* filter: drop-shadow(0 5px 25px var(--gr-900)); */
+    /* visibility: hidden; */
 }
 
 /* times */
@@ -156,10 +147,101 @@ nav ul li a {
     margin: auto;
 }
 
+/* checklist-section */
+.checklist-block {
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+.checklist-box {
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+}
+.list-check ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-check ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.list-check ul li:last-child {
+    border-bottom: none; /* Remove border from last item */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.list-check ul li:first-child{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer; /* Make list items clickable */
+}
+
+.list-check ul li input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    accent-color: var(--gr-900);
+    border: 1px solid var(--gr-100);
+    border-radius: 4px;
+}
+
+.list-check ul li label {
+    flex-grow: 1; /* Allow label to take up available space */
+    font-size: 1rem;
+    color: var(--text);
+}
+.day-streak {
+    width: calc(100% - 60px);
+    padding: 10px;
+    margin-top: 10px;
+}
+.streak-info {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: end;
+   align-items: center;
+  }
+.streak-info span {
+    padding: 0 10px 0 05px ;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.day-streak-svg {
+    width: 100%;
+}
+.month-label {
+    fill: var(--text);
+    font-size: 0.9rem;
+    text-anchor: middle;
+}
+
+.day {
+    fill: #2f2f2f;
+    stroke: #1c1c1c;
+}
+
+.completed {
+    fill: var(--gr-900);
+}
+
 /* timer-section */
 .timer-block {
     position: absolute;
     flex-direction: column;
+    visibility: hidden;
 }
 
 .timer-countdown-box {
@@ -181,8 +263,8 @@ nav ul li a {
 }
 
 .controller-btn button:nth-child(1) {
-    border: 2px solid var(--bg-900);
-    background-color: var(--bg-900);
+    border: 2px solid var(--red-900);
+    background-color: var(--red-900);
     display: none;
 }
 
@@ -214,15 +296,15 @@ nav ul li a {
 }
 
 .controller-btn button:nth-child(1):hover svg {
-    fill: var(--bg-900);
+    fill: var(--white);
 }
 
 .controller-btn button:nth-child(2):hover svg {
-    fill: var(--gr-900);
+    fill: var(--white);
 }
 
 .controller-btn button:nth-child(3):hover svg {
-    fill: var(--pause);
+    fill: var(--white);
 }
 
 
@@ -232,8 +314,8 @@ nav ul li a {
     height: 400px;
     width: 400px;
     border-radius: 50%;
-    color: var(--bg-900);
-    background-color: var(--bg-900);
+    color: var(--text);
+    background-color: var(--red-900);
     overflow: hidden;
     z-index: 1;
 }
@@ -260,7 +342,7 @@ nav ul li a {
 }
 
 .semicircle:nth-child(3) {
-    background-color: var(--bg-900);
+    background-color: var(--red-900);
     z-index: 4;
     display: none;
 }
@@ -268,7 +350,7 @@ nav ul li a {
 .outermost-circle {
     width: 390px;
     height: 390px;
-    background-color: var(--bg-100);
+    background-color: var(--gray-900);
     border-radius: 50%;
     z-index: 5;
     /* display: none; */
@@ -316,8 +398,8 @@ nav ul li a {
     text-align: center;
     border: 1px solid var(--pause);
     border-radius: 8px;
-    color: var(--bg-900);
-    background-color: var(--bg-100);
+    color: var(--text);
+    background-color: var(--gray-900);
     font-size: 80px;
     cursor: pointer;
 }
@@ -366,8 +448,8 @@ nav ul li a {
     height: 400px;
     width: 400px;
     border-radius: 50%;
-    background-color: var(--bg-300);
-    color: var(--bg-900);
+    background-color: var(--gr-900);
+    color: var(--text);
     overflow: hidden;
     z-index: 1;
 }
@@ -375,7 +457,7 @@ nav ul li a {
 .inner-circle {
     width: 390px;
     height: 390px;
-    background-color: var(--bg-100);
+    background-color: var(--gray-900);
     border-radius: 50%;
     z-index: 5;
 }
@@ -402,8 +484,8 @@ nav ul li a {
     height: 100%;
     width: 30%;
     padding: 20px;
-    border-left: 2px solid var(--bg-900);
-    background-color: var(--white);
+    border-left: 2px solid var(--gray-500);
+    background-color: var(--gray-900);
 }
 
 .to-do-app {
@@ -604,12 +686,12 @@ nav ul li a {
 /* footer start */
 .footer {
     padding: 14px;
-    border-top: 1px solid var(--bg-900);
+    border-top: 1px solid var(--gray-500);
 }
 
 .footer p {
-    filter: drop-shadow(0 12px 15px #a70101);
-    color: var(--bg-900);
+    /* filter: drop-shadow(0 12px 15px #a70101); */
+    color: var(--bg-100);
 }
 
 

@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Timer</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/add-name.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <link rel="stylesheet" href="css/add-name.css" />
     <script src="js/clock-select.js" type="module"></script>
 </head>
+
 <body>
     <!-- -------add name------- -->
     <div class="add-name" id="addname">
         <div class="naming-blk center">
             <label for="naming">Please! Enter your name:</label>
-            <input type="text" id="naming">
-            <button type="button" id="set-name">
-                Ok
-            </button>
+            <input type="text" id="naming" />
+            <button type="button" id="set-name">Ok</button>
         </div>
     </div>
 
     <div class="container" id="main-container">
-
         <!-- header -->
-        <div class="header center", id="header-id">
+        <div class="header center" , id="header-id">
             <div class="head-container center">
                 <div class="img center">
-                    <img src="./img/jaitriya-icon.png" alt="profile-photo">
+                    <img src="./img/jaitriya-icon.png" alt="profile-photo" />
+                </div>
+                <div class="choose-section center">
+                    <nav>
+                        <ul>
+                            <li><a href="#" tabindex="1">CheckList</a></li>
+                            <li><a href="#" tabindex="2">Timer</a></li>
+                            <li><a href="#" tabindex="3">Stopwatch</a></li>
+                        </ul>
+                        <div id="marker" class="start-home"></div>
+                    </nav>
                 </div>
                 <div class="name center"><span>name</span></div>
             </div>
@@ -36,46 +45,108 @@
 
         <!-- main-page -->
         <div class="main-page center">
-
             <!-- --------clock section--------------- -->
             <div class="clock-section">
-                <div class="choose-section center">
-                    <nav>
-                        <ul>
-                            <li><a href="#-" tabindex="1">Timer</a></li>
-                            <li><a href="#" tabindex="8">Stopwatch</a></li>
-                        </ul>
-                        <div id="marker" class="start-home"></div>
-                    </nav>
-                </div>
-                
                 <div class="time-dialogue center">
-                    <div class="stopwatch-block center">
-                            <div class="stopwatch-countdown-box">
-                                <div class="stopwatch-countdown center">
-                                    <div class="inner-circle"></div>
-                                    <div class="time-stamp center">
-                                        <div id="stopwatch-tiktok" class="center">
-                                            <p>00:00:00<span>.0</span></p>
+
+                    <div class="checklist-block center">
+                        <div class="checklist-box center">
+                            <h1>Yearly Streak Progress</h1>
+                            <div class="list-check" id="technologyList">
+                                <ul>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="vue-checkbox" />
+                                            <label for="vue-checkbox">Aptitude/Reasoning 30min</label>
                                         </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="react-checkbox" />
+                                            <label for="react-checkbox">Puzzles 15min</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="angular-checkbox" />
+                                            <label for="angular-checkbox">Interview prep 1hour</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="angular-checkbox" />
+                                            <label for="angular-checkbox">Project 1hour</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="angular-checkbox" />
+                                            <label for="angular-checkbox">Learn AI 2hour</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list-item">
+                                            <input type="checkbox" id="angular-checkbox" />
+                                            <label for="angular-checkbox">DSA 2hour</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="day-streak">
+                            <div class="streak-info">
+                                Total active days: <span id="total-days">0</span> Max streak: <span id="max-streak">0</span>
+                            </div>
+                            <div class="day-streak-svg">
+                                <svg id="streak-svg" width="100%" viewBox="0 0 985 120"></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stopwatch-block center">
+                        <div class="stopwatch-countdown-box">
+                            <div class="stopwatch-countdown center">
+                                <div class="inner-circle"></div>
+                                <div class="time-stamp center">
+                                    <div id="stopwatch-tiktok" class="center">
+                                        <p>00:00:00<span>.0</span></p>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="stopwatch-controller controller-btn center">
-                                <button type="button" id="reset" value="stopper" tabindex="9">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/></g></g></svg>
-                                </button>
-                                <button type="button" id="play-pause" value="play" tabindex="10">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
-                                </button>
-                                <button type="button" id="play-pause" value="pause" tabindex="11">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
-                                </button>
-                            </div>
-                            
+                        </div>
+
+                        <div class="stopwatch-controller controller-btn center">
+                            <button type="button" id="reset" value="stopper" tabindex="9">
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                                    viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
+                                    <g>
+                                        <path d="M0,0h24v24H0V0z" fill="none" />
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path
+                                                d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <button type="button" id="play-pause" value="play" tabindex="10">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#ffffff">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                            <button type="button" id="play-pause" value="pause" tabindex="11">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#ffffff">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M6 6h12v12H6z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    
+
                     <div class="timer-block center">
                         <div class="timer-countdown-box">
                             <div class="timer-countdown center">
@@ -103,16 +174,35 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="timer-controller controller-btn center">
                             <button type="button" id="reset" tabindex="5">
-                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><g><path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/></g></g></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                                    viewBox="0 0 24 24" width="24px" fill="#fff">
+                                    <g>
+                                        <path d="M0,0h24v24H0V0z" fill="#8b0606" />
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path
+                                                d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z" />
+                                        </g>
+                                    </g>
+                                </svg>
                             </button>
                             <button type="button" id="play-pause" value="play" tabindex="6">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#fff">
+                                    <path d="M0 0h24v24H0z" fill="#04ba31" />
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
                             </button>
                             <button type="button" id="play-pause" value="pause" tabindex="7">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#fff">
+                                    <path d="M0 0h24v24H0z" fill="#ff7500" />
+                                    <path d="M6 6h12v12H6z" />
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -122,13 +212,14 @@
             <!-- --------task section--------------- -->
             <div class="task-section">
                 <div class="to-do-app">
-                    <p>Add Task<img src="./img/view_list_black_24dp.svg" alt=""></p>
+                    <p>Add Task<img src="./img/view_list_black_24dp.svg" alt="" /></p>
                 </div>
                 <div class="box-shadow-bottom">
-                    <div class="task-dialog ">
+                    <div class="task-dialog">
                         <div class="input-task-area">
-                            <input type="text" id="input-task" placeholder="Enter task here" tabindex="12">
-                            <input type="date" id="due-task-date" name="task-date" title="due task date" tabindex="13">
+                            <input type="text" id="input-task" placeholder="Enter task here" tabindex="12" />
+                            <input type="date" id="due-task-date" name="task-date" title="due task date"
+                                tabindex="13" />
                         </div>
                         <button accesskey="s" type="submit" tabindex="14">Add</button>
                     </div>
@@ -136,24 +227,18 @@
                 <div class="task-lister">
                     <div class="daily-text-bar margin-right-10 diff-task-list">
                         <h4>Daily task</h4>
-                        <hr>
-                        <ul id="daily-task-list">
-                            
-                        </ul>
+                        <hr />
+                        <ul id="daily-task-list"></ul>
                     </div>
                     <div class="today-text-bar margin-right-10 diff-task-list">
                         <h4>Today task</h4>
-                        <hr>
-                        <ul id="today-task-list">
-                            
-                        </ul>
+                        <hr />
+                        <ul id="today-task-list"></ul>
                     </div>
                     <div class="other-text-bar margin-right-10 diff-task-list">
-                        <h4>Scheduled task</h4>  
-                        <hr>
-                        <ul id="other-task-list">
-                            
-                        </ul>
+                        <h4>Scheduled task</h4>
+                        <hr />
+                        <ul id="other-task-list"></ul>
                     </div>
                 </div>
             </div>
@@ -162,26 +247,28 @@
             <p>Keep Doing</p>
         </div>
     </div>
-</body>
-<script>
-    let marker = document.querySelector('#marker');
-    let item = document.querySelectorAll('nav a');
-    let activePage = window.location.pathname;
-    console.log(activePage);
 
-    function indicator(e) {
-        marker.style.width = e.offsetWidth+'px';
-        marker.style.left = e.offsetLeft+'px';
-    }
-    item.forEach(link => {
-        link.addEventListener('click', (e)=>{
-            indicator(e.target);
-            
-        })
-    })
-</script>
-<script src="js/timer.js" type="module"></script>
-<script src="js/stopwatch.js" type="module"></script>
-<script src="js/todo.js" type="module"></script>
-<script src="js/addname.js" type="module"></script>
+    <script>
+        let marker = document.querySelector("#marker");
+        let item = document.querySelectorAll("nav a");
+        let activePage = window.location.pathname;
+        console.log(activePage);
+
+        function indicator(e) {
+            marker.style.width = e.offsetWidth + 20 + "px";
+            marker.style.left = e.offsetLeft - 10 + "px";
+        }
+        item.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                indicator(e.target);
+            });
+        });
+    </script>
+    <script src="js/timer.js" type="module"></script>
+    <script src="js/stopwatch.js" type="module"></script>
+    <script src="js/todo.js" type="module"></script>
+    <script src="js/addname.js" type="module"></script>
+    <script src="js/streak-tracket.js" type="module"></script>
+</body>
+
 </html>
