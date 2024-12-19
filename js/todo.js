@@ -4,7 +4,7 @@
 const inputTask = document.getElementById("input-task");
 const duetaskdate = document.getElementById("due-task-date");
 const addtask = document.querySelector(".task-dialog button");
-const tasklist = document.querySelectorAll(".task-lister div ul");
+const tasklist = document.querySelector(".today-text-bar ul");
 
 function addTask() {
   if (inputTask.value === "") {
@@ -40,15 +40,10 @@ function addTask() {
       );
       return;
     } else {
-      if (userdate.getTime() == currentdate.getTime()) {
         listMaker();
-        tasklist[1].appendChild(li);
+        tasklist.appendChild(li);
         saveDataToday();
-      } else {
-        listMaker();
-        tasklist[2].appendChild(li);
-        saveDataOthers();
-      }
+      
     }
 
     function listMaker() {
@@ -90,24 +85,24 @@ duetaskdate.addEventListener("keyup", function (event) {
   }
 });
 
-tasklist[0].addEventListener(
-  "click",
-  function (e) {
-    if (e.target.tagName === "LI" && e.target.parentElement.id === "daily-task-list") {
-      e.target.classList.toggle("task-done");
-      saveDataDaily();
-    } else if (e.target.tagName === "IMG" && e.target.id === "close-task") {
-      let answer = window.confirm("Do you want to delet?");
-      if (answer == true) {
-        e.target.parentElement.parentElement.remove();
-        saveDataDaily();
-      }
-    }
-  },
-  false
-);
+// tasklist[0].addEventListener(
+//   "click",
+//   function (e) {
+//     if (e.target.tagName === "LI" && e.target.parentElement.id === "daily-task-list") {
+//       e.target.classList.toggle("task-done");
+//       saveDataDaily();
+//     } else if (e.target.tagName === "IMG" && e.target.id === "close-task") {
+//       let answer = window.confirm("Do you want to delet?");
+//       if (answer == true) {
+//         e.target.parentElement.parentElement.remove();
+//         saveDataDaily();
+//       }
+//     }
+//   },
+//   false
+// );
 
-tasklist[1].addEventListener(
+tasklist.addEventListener(
   "click",
   function (e) {
     if (e.target.tagName === "LI" && e.target.parentElement.id === "today-task-list") {
@@ -123,7 +118,7 @@ tasklist[1].addEventListener(
       let li = document.createElement("li");
       li.innerHTML = e.target.parentElement.parentElement.innerHTML;
       e.target.parentElement.parentElement.remove();
-      tasklist[0].appendChild(li);
+      tasklist.appendChild(li);
       saveDataDaily();
       saveDataToday();
     }
@@ -131,39 +126,31 @@ tasklist[1].addEventListener(
   false
 );
 
-tasklist[2].addEventListener(
-  "click",
-  function (e) {
-    if (e.target.tagName === "IMG" && e.target.id === "close-task") {
-      let answer = window.confirm("Do you want to delet?");
-      if (answer == true) {
-        e.target.parentElement.parentElement.remove();
-        saveDataOthers();
-      }
-    } else if (e.target.tagName === "IMG" && e.target.id === "move-task") {
-      let li = document.createElement("li");
-      li.innerHTML = e.target.parentElement.parentElement.innerHTML;
-      e.target.parentElement.parentElement.remove();
-      tasklist[1].appendChild(li);
-      saveDataToday();
-      saveDataOthers();
-    }
-  },
-  false
-);
+// tasklist[2].addEventListener(
+//   "click",
+//   function (e) {
+//     if (e.target.tagName === "IMG" && e.target.id === "close-task") {
+//       let answer = window.confirm("Do you want to delet?");
+//       if (answer == true) {
+//         e.target.parentElement.parentElement.remove();
+//         saveDataOthers();
+//       }
+//     } else if (e.target.tagName === "IMG" && e.target.id === "move-task") {
+//       let li = document.createElement("li");
+//       li.innerHTML = e.target.parentElement.parentElement.innerHTML;
+//       e.target.parentElement.parentElement.remove();
+//       tasklist[1].appendChild(li);
+//       saveDataToday();
+//       saveDataOthers();
+//     }
+//   },
+//   false
+// );
 
-function saveDataDaily() {
-  localStorage.setItem("dailyList", tasklist[0].innerHTML);
-}
 function saveDataToday() {
-  localStorage.setItem("todayList", tasklist[1].innerHTML);
-}
-function saveDataOthers() {
-  localStorage.setItem("othersList", tasklist[2].innerHTML);
+  localStorage.setItem("todayList", tasklist.innerHTML);
 }
 function showTasks() {
-  tasklist[0].innerHTML = localStorage.getItem("dailyList");
-  tasklist[1].innerHTML = localStorage.getItem("todayList");
-  tasklist[2].innerHTML = localStorage.getItem("othersList");
+  tasklist.innerHTML = localStorage.getItem("todayList");
 }
 showTasks();

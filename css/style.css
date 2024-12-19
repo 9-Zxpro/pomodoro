@@ -501,54 +501,52 @@ nav ul li a {
     font-weight: 600;
 }
 
-.to-do-app img {
-    margin-left: 10px;
-    width: 30px;
-}
-
 .box-shadow-bottom {
     padding-bottom: 12px;
-    box-shadow: 0px 8px 12px -8px rgb(0, 0, 0, 0.2);
 }
 
 .task-dialog {
     display: flex;
     justify-content: space-between;
-    border-radius: 40px;
-    padding: 10px;
+    border-radius: 20px;
     margin-bottom: 10px;
-    border: 3px solid var(--bg-300);
+    border: solid 2px var(--gray-500);
+    
 }
-
+.input-task-area {
+    margin-left: 15px;
+}
 .input-task-area input {
     border: none;
     outline: none;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
+    background-color: transparent;
 }
 
 .input-task-area input:nth-child(1) {
-    padding: 6px 16px;
+    padding: 6px 8px 0 0;
     font-size: 1.4em;
     width: 100%;
 }
 
 .input-task-area input:nth-child(2) {
-    padding-left: 16px;
+    padding: 6px 8px 8px 0;
+}
 
+#due-task-date::-webkit-calendar-picker-indicator {
+    color: #fff;
 }
 
 .task-dialog button {
     padding: 4px 24px;
+    margin: 8px 8px;
     font-size: 1em;
     font-weight: 600;
     border: none;
     color: #fff;
-    border-radius: 40px;
+    border-radius: 20px;
     background-color: var(--gr-900);
     border: 2px solid var(--gr-300);
     cursor: pointer;
-
 }
 
 .task-dialog button:hover {
@@ -573,26 +571,20 @@ nav ul li a {
 }
 
 .task-lister div h4 {
-    color: var(--gr-900);
-}
-
-.task-lister div hr {
-    border: 1px solid var(--gr-900);
-    margin-top: 2px;
+    color: var(--text);
 }
 
 .task-lister div ul {
-    margin: 10px 0;
+    margin: 6px 0;
 }
 
 .task-lister div ul li {
     list-style: none;
     font-size: 1em;
-    padding: 16px 16px 16px 40px;
+    padding: 14px;
     user-select: none;
-    margin: 10px 0 0 0;
-    background-color: var(--bg-100);
-    border: 1px solid var(--bg-300);
+    margin: 6px 0 0 0;
+    border: 1px solid var(--gray-500);
     border-radius: 16px;
     position: relative;
     cursor: pointer;
@@ -610,7 +602,7 @@ nav ul li a {
 }
 
 #other-task-list li:hover::before {
-    display: none;
+    /* display: none; */
 }
 
 .task-lister div ul li:hover::before {
@@ -621,7 +613,6 @@ nav ul li a {
 
 .task-lister div ul li.task-done {
     color: var(--crossed);
-    font-weight: 300;
     text-decoration: line-through;
     border: 1px solid var(--gr-300);
     background-color: var(--gr-100);
@@ -644,16 +635,15 @@ nav ul li a {
     position: absolute;
     right: 4px;
     padding: 2px 4px;
-    margin: 0;
-    border-radius: 20px;
+    margin: 4px;
     background-color: transparent;
     top: calc(50% - 18px);
     opacity: 0;
 }
 
 .task-lister div ul li div img {
-    border-radius: 50%;
-    padding: 4px;
+    border-radius: 4px;
+    padding: 2px;
     margin: 0 4px;
 }
 
@@ -675,12 +665,7 @@ nav ul li a {
 #daily-task-list li:hover div img:nth-child(2) {
     display: none;
 }
-.diff-task-list {
-    border: 2px solid var(--pause);
-    border-radius: 16px;
-    padding: 8px;
-    margin-bottom: 10px;
-}
+
 
 
 /* footer start */
