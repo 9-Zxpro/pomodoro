@@ -15,14 +15,15 @@
     --crossed: #5d5959;
     --repeater: #08f9ff4d;
 }
+
 * {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #1a1a1a;
     color: var(--text);
 }
+
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -83,6 +84,7 @@
     height: 100%;
     width: 100%;
 }
+
 .choose-section {
     height: 100%;
     flex-direction: row;
@@ -108,6 +110,7 @@ nav ul li a {
     font-size: 1em;
     font-weight: 400;
 }
+
 .name span {
     color: var(--pause);
     text-transform: uppercase;
@@ -155,11 +158,13 @@ nav ul li a {
     width: 100%;
     height: 100%;
 }
+
 .checklist-box {
     flex-direction: column;
     margin-top: 20px;
     width: 100%;
 }
+
 .list-check ul {
     list-style: none;
     padding: 0;
@@ -171,11 +176,13 @@ nav ul li a {
 }
 
 .list-check ul li:last-child {
-    border-bottom: none; /* Remove border from last item */
+    border-bottom: none;
+    /* Remove border from last item */
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-.list-check ul li:first-child{
+
+.list-check ul li:first-child {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -184,7 +191,8 @@ nav ul li a {
     display: flex;
     align-items: center;
     padding: 0.75rem 1rem;
-    cursor: pointer; /* Make list items clickable */
+    cursor: pointer;
+    /* Make list items clickable */
 }
 
 .list-check ul li input[type="checkbox"] {
@@ -197,31 +205,37 @@ nav ul li a {
 }
 
 .list-check ul li label {
-    flex-grow: 1; /* Allow label to take up available space */
+    flex-grow: 1;
+    /* Allow label to take up available space */
     font-size: 1rem;
     color: var(--text);
 }
+
 .day-streak {
     width: calc(100% - 60px);
     padding: 10px;
     margin-top: 10px;
 }
+
 .streak-info {
     width: 100%;
     font-size: 1rem;
     margin-bottom: 8px;
     display: flex;
     justify-content: end;
-   align-items: center;
-  }
+    align-items: center;
+}
+
 .streak-info span {
-    padding: 0 10px 0 05px ;
+    padding: 0 10px 0 05px;
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .day-streak-svg {
     width: 100%;
 }
+
 .month-label {
     fill: var(--text);
     font-size: 0.9rem;
@@ -229,18 +243,20 @@ nav ul li a {
 }
 
 .day {
-    fill: #2f2f2f;
-    stroke: #1c1c1c;
+    fill: var(--gray-500);
+    /* stroke: #1c1c1c; */
 }
 
 .completed {
     fill: var(--gr-900);
+    /* stroke: var(--gr-900); */
 }
 
 /* timer-section */
 .timer-block {
     position: absolute;
     flex-direction: column;
+    margin-top: 80px;
     visibility: hidden;
 }
 
@@ -257,7 +273,7 @@ nav ul li a {
 }
 
 .controller-btn button {
-    padding: 15px 80px 13px;
+    padding: 10px 60px 8px;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -294,20 +310,6 @@ nav ul li a {
     background-color: transparent;
     transition: 0.1s;
 }
-
-.controller-btn button:nth-child(1):hover svg {
-    fill: var(--white);
-}
-
-.controller-btn button:nth-child(2):hover svg {
-    fill: var(--white);
-}
-
-.controller-btn button:nth-child(3):hover svg {
-    fill: var(--white);
-}
-
-
 
 .timer-countdown {
     position: absolute;
@@ -355,19 +357,6 @@ nav ul li a {
     z-index: 5;
     /* display: none; */
 }
-
-/* .timer-countdown:hover .semicircle:nth-child(1) {
-    transform: rotate(180deg);
-    transition: 1s linear;
-}
-.timer-countdown:hover .semicircle:nth-child(2) {
-    transform: rotate(360deg);
-    transition: 2s linear;
-}
-.timer-countdown:hover .semicircle:nth-child(3) {
-    opacity: 0;
-    transition: opacity 0s 1s;
-} */
 
 .time-stamp {
     position: absolute;
@@ -434,6 +423,7 @@ nav ul li a {
 .stopwatch-block {
     flex-direction: column;
     position: absolute;
+    margin-top: 80px;
     visibility: hidden;
 }
 
@@ -501,8 +491,10 @@ nav ul li a {
     font-weight: 600;
 }
 
-.box-shadow-bottom {
-    padding-bottom: 12px;
+.add-items-block {
+    border-bottom: 4px solid var(--gray-500);
+    padding-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .task-dialog {
@@ -511,30 +503,25 @@ nav ul li a {
     border-radius: 20px;
     margin-bottom: 10px;
     border: solid 2px var(--gray-500);
-    
+
 }
+
 .input-task-area {
     margin-left: 15px;
 }
+
 .input-task-area input {
     border: none;
     outline: none;
     background-color: transparent;
 }
 
-.input-task-area input:nth-child(1) {
+.input-task-area input {
     padding: 6px 8px 0 0;
     font-size: 1.4em;
     width: 100%;
 }
 
-.input-task-area input:nth-child(2) {
-    padding: 6px 8px 8px 0;
-}
-
-#due-task-date::-webkit-calendar-picker-indicator {
-    color: #fff;
-}
 
 .task-dialog button {
     padding: 4px 24px;
@@ -570,18 +557,14 @@ nav ul li a {
     scroll-behavior: auto;
 }
 
-.task-lister div h4 {
-    color: var(--text);
-}
-
 .task-lister div ul {
     margin: 6px 0;
 }
 
-.task-lister div ul li {
+.task-item {
     list-style: none;
     font-size: 1em;
-    padding: 14px;
+    padding: 14px 30px 18px 42px;
     user-select: none;
     margin: 6px 0 0 0;
     border: 1px solid var(--gray-500);
@@ -589,72 +572,73 @@ nav ul li a {
     position: relative;
     cursor: pointer;
 }
-
-.task-lister div ul li::before {
-    content: '';
+.task-item img {
     position: absolute;
-    height: 24px;
-    width: 24px;
     border-radius: 50%;
-    background-image: url(./img/unchecked_circle.svg);
     left: 12px;
-    top: calc(50% - 12px);
+    top: calc(50% - 8px);
 }
 
-#other-task-list li:hover::before {
-    /* display: none; */
-}
-
-.task-lister div ul li:hover::before {
-    background-image: url(./img/check_circle.svg);
-    filter: invert(62%) sepia(65%) saturate(3453%) hue-rotate(91deg) brightness(56%) contrast(102%);
-
-}
-
-.task-lister div ul li.task-done {
+.task-done {
     color: var(--crossed);
     text-decoration: line-through;
-    border: 1px solid var(--gr-300);
-    background-color: var(--gr-100);
+    border: 1px solid var(--gray-500);
+    background-color: var(--gray-900);
 }
 
-.task-lister div ul li.task-done::before {
-    background-image: url(./img/task_alt_black_24dp.svg);
-    filter: invert(62%) sepia(65%) saturate(3453%) hue-rotate(91deg) brightness(56%) contrast(102%);
-
-}
-
-.task-lister div ul li p {
+.task-item p {
     position: absolute;
     right: 40px;
     bottom: 2px;
     font-size: .7em;
 }
 
-.task-lister div ul li div {
+.kebab-icon {
     position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
     right: 4px;
     padding: 2px 4px;
     margin: 4px;
     background-color: transparent;
     top: calc(50% - 18px);
-    opacity: 0;
 }
 
-.task-lister div ul li div img {
+.kebab-icon span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    margin: 3px auto;
+    background-color: var(--text);
+    border-radius: 50%;
+}
+
+/* Dropdown Menu */
+.kebab-menu {
+    position: absolute;
+    right: 24px;
+    background-color: var(--gray-900);
+    border: 1px solid var(--gray-500);
     border-radius: 4px;
-    padding: 2px;
-    margin: 0 4px;
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    z-index: 10;
 }
 
-.task-lister div ul li div img:nth-child(1) {
-    background-color: var(--pause);
-
+.kebab-menu li {
+    padding: 2px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.task-lister div ul li div img:nth-child(2) {
-    background-color: var(--gr-900);
+.kebab-menu li:hover {
+    background-color: #f0f0f0;
+}
 
+.hidden {
+    display: none;
 }
 
 .task-lister div ul li:hover div {
@@ -678,8 +662,3 @@ nav ul li a {
     /* filter: drop-shadow(0 12px 15px #a70101); */
     color: var(--bg-100);
 }
-
-
-
- 
-
